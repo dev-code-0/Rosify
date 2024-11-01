@@ -33,16 +33,17 @@ margin: auto;
             /* overflow: initial; */
             margin: auto;
             overflow: initial;
+            
         }
 
         h1 {
             font-size: 3vw;
             margin-bottom: 20px;
-            font: bold 40px "Cascadia Code", sans-serif;
+            font: bold 40px "Verdana", serif;
         }
 
         p {
-            font: italic small-caps bold 16px/2 cursive;
+            font: italic small-caps bold 16px/2 ;
         }
 
         .highlight {
@@ -111,7 +112,7 @@ margin: auto;
         }
 
        
-
+        
 
         .modal {
             display: none;

@@ -11,17 +11,18 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link href="https://fonts.googleapis.com/css2?family=NombreDeFuente&display=swap" rel="stylesheet">
 
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="./styles/style_pag1.css">
+        <link rel="stylesheet" href="./styles/style_pag2.css">
     
 </head>
 
 <body>
     <main>
         <!-- primera pestaña: Personalización -->
-        <div class="container first-page" id="firstTab">
+        <div class="container first-page" id="firstTab"  style="display:none;">
 
 
-            <div11 style="display: inline-flex;">
+            <div11 style="display: inline-flex;" >
                 <svg xmlns="http://www.w3.org/2000/svg" id="icono" class="highlight"
                     xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1em" height="1em"
                     viewBox="0 0 128 128" xml:space="preserve"
@@ -107,7 +108,7 @@
                             data-color="#6e16e3">
                     </div>
                     <div class="swiper-slide"> <img class="rose" src="./3d/rose-yellow.png" alt="Rosa amarilla"
-                            data-color="#fddd00">
+                            data-color="#fdd300">
                     </div>
                     <div class="swiper-slide"> <img class="rose" src="./3d/rose-lightblue.png" alt="Rosa azul"
                             data-color="#2d95ff">
@@ -131,10 +132,10 @@
 
 
 
-            <div id="myModal" class="modal">
+            <div id="myModal" class="modal" >
                 <div class="modal-content">
-                    <span class="close">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+                    <div class="close" id="close-modal">
+                        <svg xmlns="http://www.w3.org/2000/svg"  width="1.2em" height="1.2em" viewBox="0 0 24 24">
                             <g fill="none">
                                 <path
                                     d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z" />
@@ -142,7 +143,7 @@
                                     d="M12 3a1 1 0 0 1 .117 1.993L12 5H7a1 1 0 0 0-.993.883L6 6v12a1 1 0 0 0 .883.993L7 19h4.5a1 1 0 0 1 .117 1.993L11.5 21H7a3 3 0 0 1-2.995-2.824L4 18V6a3 3 0 0 1 2.824-2.995L7 3zm5.707 5.464l2.828 2.829a1 1 0 0 1 0 1.414l-2.828 2.829a1 1 0 1 1-1.414-1.415L17.414 13H12a1 1 0 1 1 0-2h5.414l-1.121-1.121a1 1 0 0 1 1.414-1.415" />
                             </g>
                         </svg>
-                    </span>
+                    </div>
                     <h2>Confirmar selección</h2>
                     <p>Has seleccionado una rosa de color:
                         <svg xmlns="http://www.w3.org/2000/svg" id="selectedRoseColor" class="highlight"
@@ -212,7 +213,7 @@
 
 
         <!-- Segunda pestaña: Personalización -->
-        <div id="secondTab" class=" second-page" style="display:none;">
+        <div id="secondTab" class=" second-page">
 
             <div id="page-2-image-container" class="image-container">
                 <div id="integer-rosa" class="integer-rosa-img">
@@ -223,58 +224,55 @@
                 <div style=" width: 56%; transform: translate(70%, -145px); text-align: initial; transition: 0.7s;">
                     <div class="preview-text color-rose">
                         <span id="name-vista-previa" class="color-rose"></span>
-                        <span class="si-0">, te han regalado esta rosa para que sepas lo especial que eres para esa
+                        <span class="si-0" id="s0">, te han regalado esta rosa para que sepas lo especial que eres para esa
                             persona</span>
-                        <span class="si-1">, te han regalado esta rosa para desearte mucha suerte en los próximos
+                        <span class="si-1" id="s1">, te han regalado esta rosa para desearte mucha suerte en los próximos
                             dias</span>
-                        <span class="si-2">, te han regalado esta rosa para darte muchos ánimos y abrazos</span>
+                        <span class="si-2" id="s2">, te han regalado esta rosa para darte muchos ánimos y abrazos</span>
 
-                        <span class="si-3">, te han regalado esta rosa para que te encuentres mejor y te recuperes
+                        <span class="si-3" id="s3">, te han regalado esta rosa para que te encuentres mejor y te recuperes
                             pronto.</span>
-                        <span class="si-4">, te han regalado esta rosa para mostrar su amor y desear un buen San
+                        <span class="si-4" id="s4">, te han regalado esta rosa para mostrar su amor y desear un buen San
                             Valentín.</span>
-                        <span class="si-5">, te han regalado esta rosa para desearte un Feliz Cumpleaños y darte
+                        <span class="si-5" id="s5">, te han regalado esta rosa para desearte un Feliz Cumpleaños y darte
                             abrazos.</span>
 
-                        <span class="si-6">, te han regalado esta rosa para desearte un buen día de la Madre.</span>
-                        <span class="si-7">, te han regalado esta rosa para desearte un buen día del Padre.</span>
-                        <span class="si-8">, te han regalado esta rosa para celebrar este día del mes tan
+                        <span class="si-6" id="s6">, te han regalado esta rosa para desearte un buen día de la Madre.</span>
+                        <span class="si-7" id="s7">, te han regalado esta rosa para desearte un buen día del Padre.</span>
+                        <span class="si-8" id="s8">, te han regalado esta rosa para celebrar este día del mes tan
                             especial.</span>
 
-                        <span class="si-9">, te han regalado esta rosa para que sepas lo siente mucho lo que ha
+                        <span class="si-9" id="s9">, te han regalado esta rosa para que sepas lo siente mucho lo que ha
                             pasado.</span>
-                        <span class="si-10">, te han regalado esta rosa para felicitarte por lo que ha ocurrido!</span>
-                        <span class="si-11">, te han regalado esta rosa para agradecerte todo lo que has hecho.</span>
-                        <span class="si-12">, te han regalado esta rosa para desearte un Feliz Sant Jordi!</span>
+                        <span class="si-10" id="s10">, te han regalado esta rosa para felicitarte por lo que ha ocurrido!</span>
+                        <span class="si-11" id="s11">, te han regalado esta rosa para agradecerte todo lo que has hecho.</span>
+                        <span class="si-12" id="s12">, te han regalado esta rosa para desearte un Feliz Sant Jordi!</span>
 
-                        <span class="si-13">, te han regalado esta rosa para demostrar apoyo contra el cancer</span>
-                        <span class="si-14">, te han regalado esta rosa para agradecer vuestra amistad</span>
-                        <span class="si-15">, te han regalado esta rosa sin razón, porqué si</span>
+                        <span class="si-13" id="s13">, te han regalado esta rosa para demostrar apoyo contra el cancer</span>
+                        <span class="si-14" id="s14">, te han regalado esta rosa para agradecer vuestra amistad</span>
+                        <span class="si-15" id="s15">, te han regalado esta rosa sin razón, porqué si</span>
 
 
-                        <span class="si-x">, <br>elige una intención (siguiente)</span>
+                        <span class="si-x" id="elige-intencion">, <br>elige una intención (siguiente)</span>
                     </div>
-                    <div class="preview-label bg-strong-color">Vista previa</div>
+                    <div class="preview-label bg-strong-color" id="vista-previa">Vista previa</div>
                 </div>
 
 
             </div>
 
-            <div id="section-name">
+            <div id="section-name" >
                 <div class="p-24 pb-0 pt-0">
-                    <h2>
-                        Escribe <span id="su">su</span> nombre<br>o apodo</h2>
+                    <h2 style="font-size: 30px;font-weight: 600;text-align: left;color: #000;line-height: 38px; margin: auto">
+                        Escribe <span id="su" class="color-rose">su</span> nombre<br>o apodo</h2>
 
                 </div>
 
 
-                <div class="" style=""
-                    onclick="document.getElementById('page-2-image-container').className='image-container preview';">
+                <div>
 
                     <div class="label-float">Nombre:</div>
-                    <input id="name_gift" value="" class="input-rosify" maxlength="16"
-                        oninput="name_gift=document.getElementById('name_gift').value;document.getElementById('name-vista-previa').innerText=name_gift;"
-                        onchange="name_gift=document.getElementById('name_gift').value;document.getElementById('name-vista-previa').innerText=name_gift;">
+                    <input id="name_gift" value="" class="input-rosify" maxlength="16">
 
                 </div>
 
@@ -298,6 +296,7 @@
 
             </div>
 
+
             <div id="section-intention" style="display: none;    ">
 
                 <div class="p-24 pt-0 pb-2">
@@ -308,10 +307,8 @@
                 </div>
 
                 <div>
-
-
                     <div class="intention-container">
-                        <div class="select-intention intention1" onclick="ChangeIntention(0);">
+                        <div class="select-intention" id="intention1" onclick="ChangeIntention(0);">
 
 
                             <div style="height: 44px;align-self: center;">
@@ -327,7 +324,7 @@
                         </div>
 
 
-                        <div class="select-intention intention3" onclick="ChangeIntention(2);">
+                        <div class="select-intention " id="intention3" onclick="ChangeIntention(2);">
 
 
                             <div style="height: 44px;align-self: center;">
@@ -341,28 +338,13 @@
                             </div>
                         </div>
 
-                        <div class="select-intention intention12" onclick="ChangeIntention(11);">
+
+                        <div class="select-intention " id="intention12" onclick="ChangeIntention(11);">
 
 
                             <div style="height: 44px;align-self: center;">
-                                <div class="intention-text-top">
+                                <div style="font-size: 10px;font-weight: 500;text-align: left;color: #808080;padding-top: 4px;line-height: 13px;">
                                     Dar las
-                                    <div class="crown-container">
-                                        <div class="crown-pulse-container" style="left: 50%; top: 50%;">
-                                            <div class="crown-pulse"></div>
-                                        </div>
-                                        <div class="crown-svg-container">
-                                            <div class="crown-svg-inner-container">
-                                                <span aria-hidden="true" class="crown-svg">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                        viewBox="0 0 16 16">
-                                                        <path fill="currentColor"
-                                                            d="M7.51 4.87C7.01 6.27 6.45 6.95 5.94 7c-.57.07-1.07-.18-1.54-.8a.54.54 0 0 0-.1-.1 1 1 0 1 0-.8.4l.01.12.82 3.24A1.5 1.5 0 0 0 5.78 11h4.44a1.5 1.5 0 0 0 1.45-1.14l.82-3.24a.54.54 0 0 0 .01-.12 1 1 0 1 0-.8-.4.54.54 0 0 0-.1.09c-.49.62-1 .87-1.54.81-.5-.05-1.04-.74-1.57-2.13a1 1 0 1 0-.98 0zM11 11.75a.5.5 0 1 1 0 1H5a.5.5 0 1 1 0-1h6z">
-                                                        </path>
-                                                    </svg></span>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div style=" font-size: 17px; font-weight: 500; text-align: left; color: #000;">
                                     Gracias
@@ -371,413 +353,200 @@
                             </div>
                         </div>
 
-
-                    </div>
-
-
-                    <div id="btn-more-intentions" class="color-rose" onclick="
-                document.getElementById('btn-more-intentions').style.display='none';
-                document.getElementById('moreintentions').style.display='initial'" style="
-display: flex;display:none;
-    justify-content: center;
-    padding: 12px 24px;
-    font-weight: 500;
-">
-                        Mostrar mas
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="currentColor" style="
-                    transform: rotate(-90deg);
-    width: 12px;
-    height: 20px;
-    margin: 2px 5px;
-">
-                            <!--! Font Awesome Pro 6.2.1 by @fontawesome  - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-                            <path
-                                d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 278.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z">
-                            </path>
-                        </svg>
                     </div>
 
 
                     <div id="moreintentions" style="display: initial">
 
                         <div class="intention-container">
-
-
-                            <div class="select-intention intention13" onclick="ChangeIntention(12);">
-
-
+    
+    
+                            <div class="select-intention " id="intention13" onclick="ChangeIntention(12);">
+    
+    
                                 <div style="height: 44px;align-self: center;">
-                                    <div
-                                        style="font-size: 10px;font-weight: 500;text-align: left;color: #808080;padding-top: 4px;line-height: 13px;">
+                                    <div style="font-size: 10px;font-weight: 500;text-align: left;color: #808080;padding-top: 4px;line-height: 13px;">
                                         Feliz Sant
                                     </div>
-                                    <div style="font-size: 17px;font-weight: 500;text-align: left;color: #000;">Jordi
-                                    </div>
-
+                                    <div style="font-size: 17px;font-weight: 500;text-align: left;color: #000;">Jordi</div>
+    
                                 </div>
                             </div>
-
-
-                            <div class="select-intention intention11" onclick="ChangeIntention(10);">
-
-
+    
+    
+                            <div class="select-intention " id="intention11" onclick="ChangeIntention(10);">
+    
+    
                                 <div style="height: 44px;align-self: center;">
-                                    <div class="intention-text-top">
+                                    <div style="font-size: 10px;font-weight: 500;text-align: left;color: #808080;padding-top: 4px;line-height: 13px;">
                                         Para
-                                        <div class="crown-container">
-                                            <div class="crown-pulse-container" style="left: 50%; top: 50%;">
-                                                <div class="crown-pulse"></div>
-                                            </div>
-                                            <div class="crown-svg-container">
-                                                <div class="crown-svg-inner-container">
-                                                    <span aria-hidden="true" class="crown-svg">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                            viewBox="0 0 16 16">
-                                                            <path fill="currentColor"
-                                                                d="M7.51 4.87C7.01 6.27 6.45 6.95 5.94 7c-.57.07-1.07-.18-1.54-.8a.54.54 0 0 0-.1-.1 1 1 0 1 0-.8.4l.01.12.82 3.24A1.5 1.5 0 0 0 5.78 11h4.44a1.5 1.5 0 0 0 1.45-1.14l.82-3.24a.54.54 0 0 0 .01-.12 1 1 0 1 0-.8-.4.54.54 0 0 0-.1.09c-.49.62-1 .87-1.54.81-.5-.05-1.04-.74-1.57-2.13a1 1 0 1 0-.98 0zM11 11.75a.5.5 0 1 1 0 1H5a.5.5 0 1 1 0-1h6z">
-                                                            </path>
-                                                        </svg></span>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
-                                    <div style="font-size: 17px;font-weight: 500;text-align: left;color: #000;">
-                                        Felicitar
+                                    <div style="font-size: 17px;font-weight: 500;text-align: left;color: #000;">Felicitar
                                     </div>
-
+    
                                 </div>
                             </div>
-
-                            <div class="select-intention intention10" onclick="ChangeIntention(9);">
-
-
+    
+                            <div class="select-intention " id="intention10" onclick="ChangeIntention(9);">
+    
+    
                                 <div style="height: 44px;align-self: center;">
-                                    <div class="intention-text-top">
+                                    <div style="font-size: 10px;font-weight: 500;text-align: left;color: #808080;padding-top: 4px;line-height: 13px;">
                                         Pedir
-                                        <div class="crown-container">
-                                            <div class="crown-pulse-container" style="left: 50%; top: 50%;">
-                                                <div class="crown-pulse"></div>
-                                            </div>
-                                            <div class="crown-svg-container">
-                                                <div class="crown-svg-inner-container">
-                                                    <span aria-hidden="true" class="crown-svg">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                            viewBox="0 0 16 16">
-                                                            <path fill="currentColor"
-                                                                d="M7.51 4.87C7.01 6.27 6.45 6.95 5.94 7c-.57.07-1.07-.18-1.54-.8a.54.54 0 0 0-.1-.1 1 1 0 1 0-.8.4l.01.12.82 3.24A1.5 1.5 0 0 0 5.78 11h4.44a1.5 1.5 0 0 0 1.45-1.14l.82-3.24a.54.54 0 0 0 .01-.12 1 1 0 1 0-.8-.4.54.54 0 0 0-.1.09c-.49.62-1 .87-1.54.81-.5-.05-1.04-.74-1.57-2.13a1 1 0 1 0-.98 0zM11 11.75a.5.5 0 1 1 0 1H5a.5.5 0 1 1 0-1h6z">
-                                                            </path>
-                                                        </svg></span>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
-                                    <div style=" font-size: 17px; font-weight: 500; text-align: left; color: #000;">
-                                        Perdon
+                                    <div style=" font-size: 17px; font-weight: 500; text-align: left; color: #000;">Perdon
                                     </div>
                                 </div>
-
+    
                             </div>
-
-
+    
+    
                         </div>
-
+    
                         <div class="intention-container">
-                            <div class="select-intention intention4" onclick="ChangeIntention(3);">
-
-
+                            <div class="select-intention " id="intention4" onclick="ChangeIntention(3);">
+    
+    
                                 <div style="height: 44px;align-self: center;">
-                                    <div class="intention-text-top">
+                                    <div style="font-size: 10px;font-weight: 500;text-align: left;color: #808080;padding-top: 4px;line-height: 13px;">
                                         Apoyar
-                                        <div class="crown-container">
-                                            <div class="crown-pulse-container" style="left: 50%; top: 50%;">
-                                                <div class="crown-pulse"></div>
-                                            </div>
-                                            <div class="crown-svg-container">
-                                                <div class="crown-svg-inner-container">
-                                                    <span aria-hidden="true" class="crown-svg">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                            viewBox="0 0 16 16">
-                                                            <path fill="currentColor"
-                                                                d="M7.51 4.87C7.01 6.27 6.45 6.95 5.94 7c-.57.07-1.07-.18-1.54-.8a.54.54 0 0 0-.1-.1 1 1 0 1 0-.8.4l.01.12.82 3.24A1.5 1.5 0 0 0 5.78 11h4.44a1.5 1.5 0 0 0 1.45-1.14l.82-3.24a.54.54 0 0 0 .01-.12 1 1 0 1 0-.8-.4.54.54 0 0 0-.1.09c-.49.62-1 .87-1.54.81-.5-.05-1.04-.74-1.57-2.13a1 1 0 1 0-.98 0zM11 11.75a.5.5 0 1 1 0 1H5a.5.5 0 1 1 0-1h6z">
-                                                            </path>
-                                                        </svg></span>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                     <div style=" font-size: 17px; font-weight: 500; text-align: left; color: #000;">
                                         Enfermo
                                     </div>
-
+    
                                 </div>
-
+    
                             </div>
-
-                            <div class="select-intention intention2" onclick="ChangeIntention(1);">
-
-
+    
+                            <div class="select-intention " id="intention2" onclick="ChangeIntention(1);">
+    
+    
                                 <div style="height: 44px;align-self: center;">
-                                    <div
-                                        style="font-size: 10px;font-weight: 500;text-align: left;color: #808080;padding-top: 4px;line-height: 13px;">
+                                    <div style="font-size: 10px;font-weight: 500;text-align: left;color: #808080;padding-top: 4px;line-height: 13px;">
                                         Desear
                                     </div>
-                                    <div style="font-size: 17px;font-weight: 500;text-align: left;color: #000;">Suerte
-                                    </div>
-
+                                    <div style="font-size: 17px;font-weight: 500;text-align: left;color: #000;">Suerte</div>
+    
                                 </div>
                             </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                            <div class="select-intention intention6" onclick="ChangeIntention(5);">
-
-
+                            <div class="select-intention " id="intention6" onclick="ChangeIntention(5);">
+    
+    
                                 <div style="height: 44px;align-self: center;">
-                                    <div class="intention-text-top">
+                                    <div style="font-size: 10px;font-weight: 500;text-align: left;color: #808080;padding-top: 4px;line-height: 13px;">
                                         Feliz
-                                        <div class="crown-container">
-                                            <div class="crown-pulse-container" style="left: 50%; top: 50%;">
-                                                <div class="crown-pulse"></div>
-                                            </div>
-                                            <div class="crown-svg-container">
-                                                <div class="crown-svg-inner-container">
-                                                    <span aria-hidden="true" class="crown-svg">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                            viewBox="0 0 16 16">
-                                                            <path fill="currentColor"
-                                                                d="M7.51 4.87C7.01 6.27 6.45 6.95 5.94 7c-.57.07-1.07-.18-1.54-.8a.54.54 0 0 0-.1-.1 1 1 0 1 0-.8.4l.01.12.82 3.24A1.5 1.5 0 0 0 5.78 11h4.44a1.5 1.5 0 0 0 1.45-1.14l.82-3.24a.54.54 0 0 0 .01-.12 1 1 0 1 0-.8-.4.54.54 0 0 0-.1.09c-.49.62-1 .87-1.54.81-.5-.05-1.04-.74-1.57-2.13a1 1 0 1 0-.98 0zM11 11.75a.5.5 0 1 1 0 1H5a.5.5 0 1 1 0-1h6z">
-                                                            </path>
-                                                        </svg></span>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
-                                    <div style=" font-size: 17px; font-weight: 500; text-align: left; color: #000;">
-                                        Cumple
+                                    <div style=" font-size: 17px; font-weight: 500; text-align: left; color: #000;">Cumple
                                     </div>
-
+    
                                 </div>
                             </div>
-
+    
                         </div>
-
+    
                         <div class="intention-container">
-                            <div class="select-intention intention7" onclick="ChangeIntention(6);">
-
-
+                            <div class="select-intention " id="intention7" onclick="ChangeIntention(6);">
+    
+    
                                 <div style="height: 44px;align-self: center;">
-                                    <div class="intention-text-top">
+                                    <div style="font-size: 10px;font-weight: 500;text-align: left;color: #808080;padding-top: 4px;line-height: 13px;">
                                         Dia de la
-                                        <div class="crown-container">
-                                            <div class="crown-pulse-container" style="left: 50%; top: 50%;">
-                                                <div class="crown-pulse"></div>
-                                            </div>
-                                            <div class="crown-svg-container">
-                                                <div class="crown-svg-inner-container">
-                                                    <span aria-hidden="true" class="crown-svg">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                            viewBox="0 0 16 16">
-                                                            <path fill="currentColor"
-                                                                d="M7.51 4.87C7.01 6.27 6.45 6.95 5.94 7c-.57.07-1.07-.18-1.54-.8a.54.54 0 0 0-.1-.1 1 1 0 1 0-.8.4l.01.12.82 3.24A1.5 1.5 0 0 0 5.78 11h4.44a1.5 1.5 0 0 0 1.45-1.14l.82-3.24a.54.54 0 0 0 .01-.12 1 1 0 1 0-.8-.4.54.54 0 0 0-.1.09c-.49.62-1 .87-1.54.81-.5-.05-1.04-.74-1.57-2.13a1 1 0 1 0-.98 0zM11 11.75a.5.5 0 1 1 0 1H5a.5.5 0 1 1 0-1h6z">
-                                                            </path>
-                                                        </svg></span>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
-                                    <div style=" font-size: 17px; font-weight: 500; text-align: left; color: #000;">
-                                        Madre
+                                    <div style=" font-size: 17px; font-weight: 500; text-align: left; color: #000;">Madre
                                     </div>
-
+    
                                 </div>
-
+    
                             </div>
-
-                            <div class="select-intention intention8" onclick="ChangeIntention(7);">
-
-
+    
+                            <div class="select-intention " id="intention8" onclick="ChangeIntention(7);">
+    
+    
                                 <div style="height: 44px;align-self: center;">
-                                    <div class="intention-text-top">
+                                    <div style="font-size: 10px;font-weight: 500;text-align: left;color: #808080;padding-top: 4px;line-height: 13px;">
                                         Dia del
-                                        <div class="crown-container">
-                                            <div class="crown-pulse-container" style="left: 50%; top: 50%;">
-                                                <div class="crown-pulse"></div>
-                                            </div>
-                                            <div class="crown-svg-container">
-                                                <div class="crown-svg-inner-container">
-                                                    <span aria-hidden="true" class="crown-svg">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                            viewBox="0 0 16 16">
-                                                            <path fill="currentColor"
-                                                                d="M7.51 4.87C7.01 6.27 6.45 6.95 5.94 7c-.57.07-1.07-.18-1.54-.8a.54.54 0 0 0-.1-.1 1 1 0 1 0-.8.4l.01.12.82 3.24A1.5 1.5 0 0 0 5.78 11h4.44a1.5 1.5 0 0 0 1.45-1.14l.82-3.24a.54.54 0 0 0 .01-.12 1 1 0 1 0-.8-.4.54.54 0 0 0-.1.09c-.49.62-1 .87-1.54.81-.5-.05-1.04-.74-1.57-2.13a1 1 0 1 0-.98 0zM11 11.75a.5.5 0 1 1 0 1H5a.5.5 0 1 1 0-1h6z">
-                                                            </path>
-                                                        </svg></span>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
-                                    <div style="font-size: 17px;font-weight: 500;text-align: left;color: #000;">Padre
-                                    </div>
-
+                                    <div style="font-size: 17px;font-weight: 500;text-align: left;color: #000;">Padre</div>
+    
                                 </div>
                             </div>
-
-                            <div class="select-intention intention9" onclick="ChangeIntention(8);">
-
-
+    
+                            <div class="select-intention " id="intention9" onclick="ChangeIntention(8);">
+    
+    
                                 <div style="height: 44px;align-self: center;">
-                                    <div class="intention-text-top">
+                                    <div style="font-size: 10px;font-weight: 500;text-align: left;color: #808080;padding-top: 4px;line-height: 13px;">
                                         Cumple
-                                        <div class="crown-container">
-                                            <div class="crown-pulse-container" style="left: 50%; top: 50%;">
-                                                <div class="crown-pulse"></div>
-                                            </div>
-                                            <div class="crown-svg-container">
-                                                <div class="crown-svg-inner-container">
-                                                    <span aria-hidden="true" class="crown-svg">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                            viewBox="0 0 16 16">
-                                                            <path fill="currentColor"
-                                                                d="M7.51 4.87C7.01 6.27 6.45 6.95 5.94 7c-.57.07-1.07-.18-1.54-.8a.54.54 0 0 0-.1-.1 1 1 0 1 0-.8.4l.01.12.82 3.24A1.5 1.5 0 0 0 5.78 11h4.44a1.5 1.5 0 0 0 1.45-1.14l.82-3.24a.54.54 0 0 0 .01-.12 1 1 0 1 0-.8-.4.54.54 0 0 0-.1.09c-.49.62-1 .87-1.54.81-.5-.05-1.04-.74-1.57-2.13a1 1 0 1 0-.98 0zM11 11.75a.5.5 0 1 1 0 1H5a.5.5 0 1 1 0-1h6z">
-                                                            </path>
-                                                        </svg></span>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                     <div style=" font-size: 17px; font-weight: 500; text-align: left; color: #000;">Mes
                                     </div>
-
+    
                                 </div>
                             </div>
-
+    
                         </div>
-
-
+    
+    
                         <div class="intention-container">
-                            <div class="select-intention intention14" onclick="ChangeIntention(13);">
-
-
+                            <div class="select-intention " id="intention14" onclick="ChangeIntention(13);">
+    
+    
                                 <div style="height: 44px;align-self: center;">
-                                    <div class="intention-text-top">
+                                    <div style="font-size: 10px;font-weight: 500;text-align: left;color: #808080;padding-top: 4px;line-height: 13px;">
                                         Apoyar
-                                        <div class="crown-container">
-                                            <div class="crown-pulse-container" style="left: 50%; top: 50%;">
-                                                <div class="crown-pulse"></div>
-                                            </div>
-                                            <div class="crown-svg-container">
-                                                <div class="crown-svg-inner-container">
-                                                    <span aria-hidden="true" class="crown-svg">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                            viewBox="0 0 16 16">
-                                                            <path fill="currentColor"
-                                                                d="M7.51 4.87C7.01 6.27 6.45 6.95 5.94 7c-.57.07-1.07-.18-1.54-.8a.54.54 0 0 0-.1-.1 1 1 0 1 0-.8.4l.01.12.82 3.24A1.5 1.5 0 0 0 5.78 11h4.44a1.5 1.5 0 0 0 1.45-1.14l.82-3.24a.54.54 0 0 0 .01-.12 1 1 0 1 0-.8-.4.54.54 0 0 0-.1.09c-.49.62-1 .87-1.54.81-.5-.05-1.04-.74-1.57-2.13a1 1 0 1 0-.98 0zM11 11.75a.5.5 0 1 1 0 1H5a.5.5 0 1 1 0-1h6z">
-                                                            </path>
-                                                        </svg></span>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
-                                    <div style=" font-size: 17px; font-weight: 500; text-align: left; color: #000;">
-                                        Cancer
+                                    <div style=" font-size: 17px; font-weight: 500; text-align: left; color: #000;">Cancer
                                     </div>
-
+    
                                 </div>
-
+    
                             </div>
-
-                            <div class="select-intention intention15" onclick="ChangeIntention(14);">
-
-
+    
+                            <div class="select-intention " id="intention15" onclick="ChangeIntention(14);">
+    
+    
                                 <div style="height: 44px;align-self: center;">
-                                    <div class="intention-text-top">
+                                    <div style="font-size: 10px;font-weight: 500;text-align: left;color: #808080;padding-top: 4px;line-height: 13px;">
                                         Agradecer
-                                        <div class="crown-container">
-                                            <div class="crown-pulse-container" style="left: 50%; top: 50%;">
-                                                <div class="crown-pulse"></div>
-                                            </div>
-                                            <div class="crown-svg-container">
-                                                <div class="crown-svg-inner-container">
-                                                    <span aria-hidden="true" class="crown-svg">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                            viewBox="0 0 16 16">
-                                                            <path fill="currentColor"
-                                                                d="M7.51 4.87C7.01 6.27 6.45 6.95 5.94 7c-.57.07-1.07-.18-1.54-.8a.54.54 0 0 0-.1-.1 1 1 0 1 0-.8.4l.01.12.82 3.24A1.5 1.5 0 0 0 5.78 11h4.44a1.5 1.5 0 0 0 1.45-1.14l.82-3.24a.54.54 0 0 0 .01-.12 1 1 0 1 0-.8-.4.54.54 0 0 0-.1.09c-.49.62-1 .87-1.54.81-.5-.05-1.04-.74-1.57-2.13a1 1 0 1 0-.98 0zM11 11.75a.5.5 0 1 1 0 1H5a.5.5 0 1 1 0-1h6z">
-                                                            </path>
-                                                        </svg></span>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                     <div style="font-size: 17px;font-weight: 500;text-align: left;color: #000;">Amistad
                                     </div>
-
+    
                                 </div>
                             </div>
-
-                            <div class="select-intention intention16" onclick="ChangeIntention(15);">
-
-
+    
+                            <div class="select-intention " id="intention16" onclick="ChangeIntention(15);">
+    
+    
                                 <div style="height: 44px;align-self: center;">
-                                    <div class="intention-text-top">
+                                    <div style="font-size: 10px;font-weight: 500;text-align: left;color: #808080;padding-top: 4px;line-height: 13px;">
                                         Sín
-                                        <div class="crown-container">
-                                            <div class="crown-pulse-container" style="left: 50%; top: 50%;">
-                                                <div class="crown-pulse"></div>
-                                            </div>
-                                            <div class="crown-svg-container">
-                                                <div class="crown-svg-inner-container">
-                                                    <span aria-hidden="true" class="crown-svg">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                            viewBox="0 0 16 16">
-                                                            <path fill="currentColor"
-                                                                d="M7.51 4.87C7.01 6.27 6.45 6.95 5.94 7c-.57.07-1.07-.18-1.54-.8a.54.54 0 0 0-.1-.1 1 1 0 1 0-.8.4l.01.12.82 3.24A1.5 1.5 0 0 0 5.78 11h4.44a1.5 1.5 0 0 0 1.45-1.14l.82-3.24a.54.54 0 0 0 .01-.12 1 1 0 1 0-.8-.4.54.54 0 0 0-.1.09c-.49.62-1 .87-1.54.81-.5-.05-1.04-.74-1.57-2.13a1 1 0 1 0-.98 0zM11 11.75a.5.5 0 1 1 0 1H5a.5.5 0 1 1 0-1h6z">
-                                                            </path>
-                                                        </svg></span>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
-                                    <div style=" font-size: 17px; font-weight: 500; text-align: left; color: #000;">
-                                        Razón
+                                    <div style=" font-size: 17px; font-weight: 500; text-align: left; color: #000;">Razón
                                     </div>
-
+    
                                 </div>
                             </div>
-
+    
                         </div>
-
-
+    
+    
                     </div>
 
 
                 </div>
             </div>
+
+
+
+
+
+
+
+
+
 
             <div class="p-24 " id="nextBtn">
                 <div class="button-bottom press-effect" id="savenamesbtn" onclick="SaveNames()">
@@ -807,6 +576,8 @@ display: flex;display:none;
 
         </div>
     </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.1.0/chroma.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="scrip.js"></script>
 

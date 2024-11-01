@@ -1,0 +1,140 @@
+.second-page {
+    display: grid;
+    grid-template-rows: 260px auto 120px;
+    animation: next 0.7s 1 ease-in-out forwards;
+    width: 100vw;
+    max-width: 450px;
+    margin: auto;
+    height: 100%;
+    min-height: 100%;
+}
+.s-1 {
+    width: 150px;
+    height: 150px;
+    display: initial;
+    transition: 0.7s;
+}
+
+.integer-rosa-img {
+    margin: 0;
+    padding: 0;
+    transition: transform 0.7s ease; /* Añadir transición para movimiento suave */
+}
+
+.color-rose {
+    transition: 0.7s;
+    -webkit-transition: 0.7s;
+    -moz-transition: 0.7s;
+    -ms-transition: 0.7s;
+    -o-transition: 0.7s;
+    text-align: initial;
+}
+
+.preview-text {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    height: 120px;
+    opacity: 0;
+    transition: opacity 0.7s ease; /* Aparición suave */
+}
+
+.si-0,
+.si-1,
+.si-2,
+.si-3,
+.si-4,
+.si-5,
+.si-6,
+.si-7,
+.si-8,
+.si-9,
+.si-10,
+.si-11,
+.si-12,
+.si-13,
+.si-14,
+.si-15,
+.si-x {
+    font-weight: 500;
+    opacity: 0.6;
+    display: none;
+}
+.si-x{
+    display: initial;
+    transition: opacity 0.7s ease; /* Aparición suave */
+}
+.si-x.show {
+    display: inline; /* Mostrar la intención */
+    opacity: 1; /* Aparición con efecto */
+}
+.bg-strong-color{
+    background: #00ff0c;
+}
+.preview-label{
+    border-radius: 17px;
+    color: white;
+    letter-spacing: 0.5px;
+    transition: 0.7s;
+    text-align: center;
+    height: 31px;
+    line-height: 32px;
+    font-size: 14px;
+    margin-top: -2px;
+    width: 81%;
+    transform: translate(-33px, 19px);
+    opacity: 0;
+    transition: opacity 0.7s ease;
+    /*Apariciónsuave*/;
+    -webkit-border-radius: 17px;
+    -moz-border-radius: 17px;
+    -ms-border-radius: 17px;
+    -o-border-radius: 17px;
+}
+.pb-0 {
+    padding: 24px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.pb-2 {
+    padding-bottom: 0.5rem;
+    padding-top: 0px;
+}
+.intention-container {
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 7px 18px;
+    width: calc(100% - 36px);
+    display: grid;
+    justify-content: space-around;
+}
+
+.select-intention {
+    height: 60px;
+    border-radius: 20px;
+    display: grid;
+    border: 2px dashed #d5d5d5;
+    padding: 0px 13px;
+    background: white;
+    width: calc(100% - 42px);
+    margin: auto;
+}
+.intention-text-top {
+    font-size: 10px;
+    font-weight: 500;
+    text-align: left;
+    color: #808080;
+    padding-top: 5px;
+    line-height: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 12px;
+}
+.p-24 {
+    padding: 24px;
+}
+/* Clase para resaltar la intención seleccionada */
+.selected-intention {
+    border: 2px solid #ff3333; /* Cambia #FF5733 al color que prefieras */
+}

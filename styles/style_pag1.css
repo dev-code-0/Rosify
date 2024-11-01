@@ -9,8 +9,48 @@ main {
     height: 100%;
     overflow: hidden;
     min-height: 100%;
+}
+@keyframes next {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+        -webkit-transform: translateX(20px);
+        -moz-transform: translateX(20px);
+        -ms-transform: translateX(20px);
+        -o-transform: translateX(20px);
+}
+    to {
+        opacity: 1;
+        transform: translateX(0);
+        -webkit-transform: translateX(0);
+        -moz-transform: translateX(0);
+        -ms-transform: translateX(0);
+        -o-transform: translateX(0);
+}
+}
 
+.animated {
+    animation: next 0.9s ease-in-out forwards;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+        -webkit-transform: translateY(-30px);
+        -moz-transform: translateY(-30px);
+        -ms-transform: translateY(-30px);
+        -o-transform: translateY(-30px);
+}
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
+.modal-content {
+    opacity: 0;
+    animation: fadeIn 0.9s ease-in-out forwards;
+    -webkit-animation: fadeIn 0.9s ease-in-out forwards;
 }
 
 /* .container {

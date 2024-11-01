@@ -146,26 +146,30 @@ startAnimation();
 // Inicia la animación al cargar la página.
 
 document.getElementById("boton").onclick = function () {
-  let colorMap = {
-    red: "Rojo",
-    orange: "Anaranjado",
-    violet: "Violeta",
-    yellow: "Amarillo",
-    lightblue: "Celeste",
-    white: "Blanca",
-    pink: "Rosada",
-  };
-  // Define un mapa de colores para convertir los nombres en inglés a español.
+    let colorMap = {
+        red: "Rojo",
+        orange: "Anaranjado",
+        violet: "Violeta",
+        yellow: "Amarillo",
+        lightblue: "Celeste",
+        white: "Blanca",
+        pink: "Rosada",
+    };
 
-  modal.style.display = "block";
-  // Muestra el modal cuando el botón es clickeado.
+    // Muestra el modal con la clase de animación
+    const modal = document.getElementById("myModal");
+    modal.style.display = "block";
+    
+    const modalContent = document.querySelector(".modal-content");
+    modalContent.classList.add("animated"); // Agrega la clase para iniciar la animación
+
+    // Quitar la clase de animación después de que termine para que esté lista para reutilizarse
+    setTimeout(() => {
+        modalContent.classList.remove("animated");
+    }, 500); // Tiempo de la animación en milisegundos
 };
 
-closeBtn.onclick = closeModal;
-confirmBtn.onclick = function () {
-  closeModal();
-  nextStep();
-};
+
 
 // Función para mostrar el modal de confirmación
 function openModal() {
@@ -177,16 +181,24 @@ function closeModal() {
   document.getElementById("myModal").style.display = "none";
 }
 
-// Función para cambiar de la primera pestaña a la segunda
 document.getElementById("confirmBtn").addEventListener("click", function () {
-  const selectedColor = "rosa"; // Reemplaza esto con la lógica de selección del color real
-  localStorage.setItem("selectedRoseColor", selectedColor); // Guardar color en localStorage
+    const selectedColor = "rosa"; // Reemplaza esto con la lógica de selección del color real
+    localStorage.setItem("selectedRoseColor", selectedColor); // Guardar color en localStorage
 
-  // Ocultar la primera pestaña y mostrar la segunda
-  document.getElementById("firstTab").style.display = "none";
-  document.getElementById("secondTab").style.display = "block";
+    // Ocultar la primera pestaña
+    document.getElementById("firstTab").style.display = "none";
 
-  closeModal(); // Cerrar el modal
+    // Mostrar la segunda pestaña con animación
+    const secondTab = document.getElementById("secondTab");
+    secondTab.style.display = "block";
+    secondTab.classList.add("animated"); // Agrega la clase para la animación
+
+    // Quitar la clase de animación después de que termine
+    setTimeout(() => {
+        secondTab.classList.remove("animated");
+    }, 900); // Tiempo de la animación en milisegundos
+
+    closeModal(); // Cerrar el modal
 });
 
 // Agregar evento de clic en la "X" para regresar a la primera pestaña
@@ -225,6 +237,19 @@ document.getElementById("backBtn").addEventListener("click", function () {
     // Ocultar la segunda pestaña y mostrar la primera
     document.getElementById("secondTab").style.display = "none";
     document.getElementById("firstTab").style.display = "block";
+
+
+    // Mostrar la segunda pestaña con animación
+    const firstTab = document.getElementById("firstTab");
+    firstTab.style.display = "block";
+    firstTab.classList.add("animated"); // Agrega la clase para la animación
+
+    // Quitar la clase de animación después de que termine
+    setTimeout(() => {
+        secondTab.classList.remove("animated");
+    }, 900); // Tiempo de la animación en milisegundos
+
+
   
     // Restaurar el estado de la segunda pestaña para que parezca nueva
     // Limpiar el campo de entrada de nombre
@@ -349,12 +374,21 @@ function showIntentionSection() {
         alert("Por favor, ingresa un nombre o apodo antes de continuar.");
     } else {
         // Oculta el primer div
-        document.getElementById("section-name").style.display = "none";
-        
-        // Muestra el segundo div
-        document.getElementById("section-intention").style.display = "block";
+        const sectionName = document.getElementById("section-name");
+        sectionName.style.display = "none";
+
+        // Muestra el segundo div con animación
+        const sectionIntention = document.getElementById("section-intention");
+        sectionIntention.style.display = "block";
+        sectionIntention.classList.add("animated"); // Agrega la clase de animación
+
+        // Quitar la clase de animación después de que termine
+        setTimeout(() => {
+            sectionIntention.classList.remove("animated");
+        }, 900); // Tiempo de la animación en milisegundos
     }
 }
+
 
 // Asigna el evento de clic al botón "Continuar"
 document.getElementById("savenamesbtn").addEventListener("click", showIntentionSection);

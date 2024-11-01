@@ -8,6 +8,11 @@
     height: 100%;
     min-height: 100%;
 }
+#secondTab{
+    display: grid;
+    grid-template-rows: 300px auto 120px;
+    animation: next 0.9s 1 ease-in-out forwards;
+}
 .s-1 {
     width: 150px;
     height: 150px;
@@ -138,3 +143,4 @@
 .selected-intention {
     border: 2px solid #ff3333; /* Cambia #FF5733 al color que prefieras */
 }
+

@@ -1,8 +1,6 @@
 
         body {
-            width: 100vh;
             scroll-behavior: smooth;
-            margin: 0px;
         }
 
         main {
@@ -223,17 +221,17 @@ margin: auto;
 
         .first-page {
             /* height: 100vh; */
-            width: 100vw;
+            /* width: 100vw; */
             max-width: 450px;
             margin: auto;
-            height: 101vh;
+            /* height: 101vh; */
             min-height: 100%;
         }
     
 
         @media (max-width: 768px) {
             h1 {
-                font-size: 4vw;
+                font-size: 20px;
             }
 
             .rose {
@@ -260,7 +258,7 @@ margin: auto;
 
         @media (max-height: 768px) {
             h1 {
-                font-size: 3vw;
+                font-size: 20px;
             }
 
             .rose {

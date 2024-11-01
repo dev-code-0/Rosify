@@ -51,6 +51,7 @@ margin: auto;
         }
 
         .swiper-slide {
+            overflow: hidden;
             margin-bottom: 50px;
             border-radius: 15px;
             -webkit-border-radius: 15px;
@@ -135,11 +136,8 @@ margin: auto;
             text-align: center;
         }
 
-        .div_11s1 {
-            display: flex;
-            justify-content: center;
+        .div_111 {
             padding-top: 20px ;
-            margin-top: auto;
         }
         #boton {
             position: absolute;
@@ -230,38 +228,38 @@ margin: auto;
     
 
         @media (max-width: 600px) {
-            h1 {
-                font-size: 24px;
-                margin-bottom: 10px;
-            }
-        
-            .rose {
-                width: 80px;
-                height: 80px;
-            }
-        
-            .swiper-slide {
-                height: 150px;
-                width: 150px;
-            }
-        
-            .swiper-slide img {
-                width: 150px;
-                height: 150px;
-            }
-        
-            .highlight-box-1 {
-                width: 180px;
-                height: 180px;
-            }
-        
-            #boton {
-                padding: 10px 20px;
-                font-size: 16px;
-                margin-top: 10px;
-            }
-        }
-        
+    h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .rose {
+        width: 80px;
+        height: 80px;
+    }
+
+    .swiper-slide {
+        height: 150px;
+        width: 150px;
+    }
+
+    .swiper-slide img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .highlight-box-1 {
+        width: 180px;
+        height: 180px;
+    }
+
+    #boton {
+        padding: 10px 20px;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+}
+
 
         @media (max-height: 768px) {
             h1 {

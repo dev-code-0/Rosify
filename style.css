@@ -70,13 +70,13 @@ p {
 }
 
 .swiper-slide img {
+    height: 250px;
     width: 250px;
     border-radius: 15px;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
     -ms-border-radius: 15px;
     -o-border-radius: 15px;
-    height: 250px;
     object-fit: cover;
 }
 
@@ -137,14 +137,22 @@ button {
 }
 
 .div_111 {
-    padding-top: 50px;
+    padding-top: 50px; 
+    display: flex;
+    justify-content: center;
 }
 
 #boton {
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
+            color: rgb(255, 255, 255);
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 4px 2px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border-radius: 16px;
 }
 
 .btn2-pag2 {
@@ -241,13 +249,13 @@ button {
     }
 
     .swiper-slide {
-        height: 150px;
-        width: 150px;
+        height: 200px;
+        width: 200px;
     }
 
     .swiper-slide img {
-        width: 150px;
-        height: 150px;
+        width: 200px;
+        height: 200px;
     }
 
     .highlight-box-1 {

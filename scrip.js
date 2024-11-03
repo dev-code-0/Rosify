@@ -14,8 +14,9 @@ let inputName = document.getElementById("name_gift");
 let previewText = document.querySelector(".preview-text");
 let previewLabel = document.querySelector(".preview-label");
 let selectedRoseContainer = document.getElementById("integer-rosa");
+// Variable para verificar si una intención ha sido seleccionada
+let isIntentionSelected = false;
 
-let clickCount = 0;
 
 document.querySelectorAll(".rose").forEach((rose) => {
   rose.addEventListener("click", function () {
@@ -107,6 +108,7 @@ var swiper = new Swiper(".mySwiper", {
       document.getElementById("elige-intencion").style.color = activeColor;
       document.getElementById("agregar-video").style.backgroundColor = activeColor;
       document.getElementById("btn-letter").style.backgroundColor = activeColor;
+      document.getElementById("continuarPag3").style.backgroundColor = activeColor;
       
       for( let i = 0; i <=15; i++){
         document.getElementById(`s${i}`).style.color = activeColor;
@@ -205,6 +207,57 @@ document.getElementById("confirmBtn").addEventListener("click", function () {
     closeModal(); // Cerrar el modal
 });
 
+
+
+
+
+
+
+
+
+function showIntentionSection() {
+  // Obtén el valor del campo de entrada
+  const nameInput = document.getElementById("name_gift").value.trim();
+  
+  // Verifica si el campo está vacío
+  if (nameInput === "") {
+      alert("Por favor, ingresa un nombre o apodo antes de continuar.");
+  } else {
+      // Guardar el nombre en localStorage
+      localStorage.setItem("selectedName", nameInput);
+
+      // Oculta el primer div
+      const sectionName = document.getElementById("section-name");
+      sectionName.style.display = "none";
+
+      // Muestra el segundo div con animación
+      const sectionIntention = document.getElementById("section-intention");
+      sectionIntention.style.display = "block";
+      sectionIntention.classList.add("animated"); // Agrega la clase de animación
+
+      // Oculta el botón "savenamesbtn" y muestra el botón "continuarPag3" con animación
+      const saveNamesBtn = document.getElementById("savenamesbtn");
+      const continuarPag3 = document.getElementById("continuarPag3");
+
+      saveNamesBtn.style.display = "none";
+      continuarPag3.style.display = "block";
+      continuarPag3.classList.add("animated"); // Agrega la clase de animación al nuevo botón
+
+      // Quitar la clase de animación después de que termine
+      setTimeout(() => {
+          sectionIntention.classList.remove("animated");
+          continuarPag3.classList.remove("animated");
+      }, 900); // Tiempo de la animación en milisegundos
+  }
+}
+
+// Asigna el evento de clic al botón "savenamesbtn"
+document.getElementById("savenamesbtn").addEventListener("click", showIntentionSection);
+
+
+
+
+// Función para guardar la intención seleccionada y actualizar la vista previa
 function ChangeIntention(intentionIndex, intentionId) {
   // Ocultar todos los mensajes de intención primero
   const allMessages = document.querySelectorAll('#page-2-image-container .preview-text span');
@@ -231,128 +284,47 @@ function ChangeIntention(intentionIndex, intentionId) {
 
   // Guardar la intención seleccionada en localStorage
   localStorage.setItem("selectedIntention", intentionId);
-
+  isIntentionSelected = true; // Marcar que se ha seleccionado una intención
+  
   // Agregar la clase de borde de color solo a la intención seleccionada
   const selectedIntention = document.getElementById(intentionId);
   selectedIntention.classList.add('selected-intention');
   
   // Aplicar el color de la rosa seleccionada al borde de la intención
   if (window.currentRoseColor) {
-      selectedIntention.style.borderColor = window.currentRoseColor; // Usa el color de la rosa actual
+      selectedIntention.style.borderColor = window.currentRoseColor;
   } else {
       selectedIntention.style.borderColor = "#FF5733"; // Color predeterminado si no hay rosa seleccionada
   }
 }
 
-
-
-
-
-
-
-// Escuchar el evento de clic en el botón "Continuar" para avanzar a la siguiente sección
-document.getElementById("savenamesbtn").addEventListener("click", function() {
-  // Obtener el valor del campo de entrada de nombre
-  const nameInput = document.getElementById("name_gift").value.trim();
-  const selectedIntention = localStorage.getItem("selectedIntention");
-
-  // Verificar si el campo de nombre está vacío o si no hay intención seleccionada
-  if (nameInput === "") {
-      alert("Por favor, ingresa un nombre o apodo antes de continuar.");
-  } else if (!selectedIntention || selectedIntention === "elige-intencion") {
+// Función para avanzar a la tercera página
+function goToThirdPage() {
+  // Verifica si hay una intención seleccionada
+  if (!isIntentionSelected) {
       alert("Por favor, selecciona una intención antes de continuar.");
-  } else {
-      // Si el nombre ha sido ingresado y hay una intención seleccionada, incrementar el contador y continuar con la lógica
-      if (clickCount === 0) {
-          showIntentionSection();
-          clickCount++;
-      } else if (clickCount === 1) {
-          segundaFuncion();
-          clickCount = 0; // Reinicia el contador para alternar nuevamente
-      }
+      return;
   }
-});
 
-function showIntentionSection() {
-  // Obtén el valor del campo de entrada
-  const nameInput = document.getElementById("name_gift").value.trim();
+  // Oculta la segunda página y muestra la tercera con animación
+  const secondTab = document.getElementById("secondTab");
+  const thirdTab = document.getElementById("thirdTab");
+
+  secondTab.style.display = "none";
+  thirdTab.style.display = "block";
+  thirdTab.classList.add("animated"); // Agrega una clase de animación a la tercera página
   
-  // Verifica si el campo está vacío
-  if (nameInput === "") {
-      alert("Por favor, ingresa un nombre o apodo antes de continuar.");
-  } else {
-      // Guardar el nombre en localStorage
-      localStorage.setItem("selectedName", nameInput);
-
-      // Oculta el primer div
-      const sectionName = document.getElementById("section-name");
-      sectionName.style.display = "none";
-
-      // Muestra el segundo div con animación
-      const sectionIntention = document.getElementById("section-intention");
-      sectionIntention.style.display = "block";
-      sectionIntention.classList.add("animated"); // Agrega la clase de animación
-
-      // Quitar la clase de animación después de que termine
-      setTimeout(() => {
-          sectionIntention.classList.remove("animated");
-      }, 900); // Tiempo de la animación en milisegundos
-  }
-}
-
-
-function segundaFuncion() {
-  // Obtener la intención seleccionada desde el localStorage
-  const selectedIntention = localStorage.getItem("selectedIntention");
-
-  // Verificar si se ha cambiado la intención desde "elige-intencion"
-  const defaultMessage = document.getElementById("elige-intencion").style.display;
-
-  if (!selectedIntention || defaultMessage !== "none") {
-  } else {
-    // Si hay una intención seleccionada y el mensaje ha cambiado, muestra la tercera pestaña
-    console.log("Intención seleccionada:", selectedIntention);
-
-    // Oculta la segunda pestaña
-    const sectionIntention = document.getElementById("secondTab");
-    sectionIntention.style.display = "none";
-
-    // Muestra la tercera pestaña con animación
-    const thirdTab = document.getElementById("thirdTab");
-    thirdTab.style.display = "block";
-    thirdTab.classList.add("animated");
-
-    // Quitar la clase de animación después de que termine
-    setTimeout(() => {
+  // Quitar la clase de animación después de que termine
+  setTimeout(() => {
       thirdTab.classList.remove("animated");
-    }, 900);
-
-    // Cargar el resumen de la selección en la tercera pestaña
-    const name = localStorage.getItem("selectedName") || "Nombre no ingresado";
-    document.getElementById("summaryText").textContent = `Has ingresado el nombre: ${name} y has seleccionado la intención: ${selectedIntention}.`;
-  }
+  }, 900); // Tiempo de la animación en milisegundos
 }
 
+// Asigna el evento de clic al botón "continuarPag3"
+document.getElementById("continuarPag3").addEventListener("click", goToThirdPage);
 
-// Función para guardar la intención seleccionada y actualizar la vista previa
-function selectIntention(intentionIndex, intentionId) {
-  // Guardar la intención seleccionada en localStorage
-  localStorage.setItem("selectedIntention", intentionId);
 
-  // Ocultar el mensaje predeterminado y mostrar el mensaje correspondiente
-  document.querySelector(".si-x").style.display = "none"; // Oculta "elige una intención (siguiente)"
-  const allMessages = document.querySelectorAll(".preview-text span");
-  allMessages.forEach(msg => msg.style.display = "none"); // Ocultar todos los mensajes
-  
-  const selectedMessage = document.querySelector(`.si-${intentionIndex}`);
-  if (selectedMessage) {
-      selectedMessage.style.display = "inline"; // Mostrar el mensaje correspondiente a la intención seleccionada
-  }
-  
-  // Actualizar el nombre en la vista previa
-  const nameInput = document.getElementById("name_gift").value.trim();
-  document.getElementById("name-vista-previa").textContent = nameInput;
-}
+
 
 
 
@@ -582,27 +554,6 @@ document.getElementById("intention14").addEventListener("click", () => ChangeInt
 document.getElementById("intention15").addEventListener("click", () => ChangeIntention(14, "intention15"));
 document.getElementById("intention16").addEventListener("click", () => ChangeIntention(15, "intention16"));
 
-
-document.getElementById("nextBtnPag2-----1").addEventListener("click", function () { //MODIFICAR ESTO
-    // Ocultar la segunda pestaña
-   
-    document.getElementById("secondTab").style.display = "none";
-
-    // Mostrar la tercera pestaña con animación
-    const thirdTab = document.getElementById("thirdTab");
-    thirdTab.style.display = "block";
-    thirdTab.classList.add("animated");
-
-    // Quitar la clase de animación después de que termine
-    setTimeout(() => {
-        thirdTab.classList.remove("animated");
-    }, 900);
-
-    // Cargar el resumen de la selección en la tercera pestaña
-    const name = localStorage.getItem("selectedName") || "Nombre no ingresado";
-    const intention = localStorage.getItem("selectedIntention") || "Intención no seleccionada";
-    document.getElementById("summaryText").textContent = `Has ingresado el nombre: ${name} y has seleccionado la intención: ${intention}.`;
-});
 
 
 

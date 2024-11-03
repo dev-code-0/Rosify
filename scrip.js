@@ -109,12 +109,27 @@ var swiper = new Swiper(".mySwiper", {
       document.getElementById("agregar-video").style.backgroundColor = activeColor;
       document.getElementById("btn-letter").style.backgroundColor = activeColor;
       document.getElementById("continuarPag3").style.backgroundColor = activeColor;
+      document.getElementById("modal-video").style.borderColor = activeColor;
+      document.getElementById("url-video").style.color = activeColor;
+      document.getElementById("pegarlinkvideo").style.backgroundColor = activeColor;
+      document.getElementById("guardarlinkvideo").style.backgroundColor = activeColor;
+      document.getElementById("borrarlinkvideo").style.backgroundColor = activeColor;
+      document.getElementById("salirlinkvideo").style.backgroundColor = activeColor;
+      document.getElementById("youtube_url").style.borderColor = activeColor;
+      document.getElementById("message").style.borderColor = activeColor;
       
+
+
       for( let i = 0; i <=15; i++){
         document.getElementById(`s${i}`).style.color = activeColor;
       }
       // Actualiza el color de los elementos según el color de la rosa activa.
-      
+
+      // ========================
+      // Guardar la URL y el color de la rosa en el centro en localStorage
+      // ========================
+      localStorage.setItem("selectedRoseSrc", activeRose.src);
+      localStorage.setItem("selectedRoseColor", activeColor);
     },
   },
 });
@@ -223,7 +238,10 @@ function showIntentionSection() {
   if (nameInput === "") {
       alert("Por favor, ingresa un nombre o apodo antes de continuar.");
   } else {
+
+      // ========================
       // Guardar el nombre en localStorage
+      // ========================
       localStorage.setItem("selectedName", nameInput);
 
       // Oculta el primer div
@@ -281,8 +299,9 @@ function ChangeIntention(intentionIndex, intentionId) {
       intention.classList.remove('selected-intention');
       intention.style.borderColor = ""; // Limpiar el color de borde
   });
-
+  // ========================
   // Guardar la intención seleccionada en localStorage
+  // ========================
   localStorage.setItem("selectedIntention", intentionId);
   isIntentionSelected = true; // Marcar que se ha seleccionado una intención
   
@@ -348,6 +367,11 @@ document.getElementById("confirmBtn").onclick = function () {
   const activeIndex = swiper.realIndex;
   const activeRose = document.querySelectorAll(".rose")[activeIndex]; // La rosa que está en el centro
   const activeRoseSrc = activeRose.getAttribute("src"); // Obtiene la URL de la rosa
+  const activeColor = activeRose.dataset.color;
+
+  // Guardar la URL y el color de la rosa seleccionada en localStorage
+  localStorage.setItem("selectedRoseSrc", activeRoseSrc);
+  localStorage.setItem("selectedRoseColor", activeColor);
 
   // Cambiar a la segunda pestaña
   document.getElementById("firstTab").style.display = "none";
@@ -515,23 +539,33 @@ inputName.addEventListener('input', function () {
 
 
 
-
-
-
-
-
-
-
-
-
+// ========================
+// Lectura y verificación de valores de localStorage
+// ========================
 const storedName = localStorage.getItem("selectedName");
 const storedIntention = localStorage.getItem("selectedIntention");
+const storedRoseSrc = localStorage.getItem("selectedRoseSrc");
+const storedRoseColor = localStorage.getItem("selectedRoseColor");
+const storedVideo = localStorage.getItem("videoLink");
+const mensajeGuardado = localStorage.getItem("mensajeAdicional");
 
 if (storedName) {
     console.log("Nombre guardado:", storedName);
 }
 if (storedIntention) {
     console.log("Intención guardada:", storedIntention);
+}
+if (storedRoseSrc) {
+    console.log("URL de la rosa guardada:", storedRoseSrc);
+}
+if (storedRoseColor) {
+    console.log("Color de la rosa guardado:", storedRoseColor);
+} 
+if (storedVideo) {
+    console.log("Enlace de video guardado:", storedVideo);
+}
+if (mensajeGuardado) {
+    console.log("Mensaje adicional guardado:", mensajeGuardado);
 }
 
 
@@ -556,4 +590,104 @@ document.getElementById("intention16").addEventListener("click", () => ChangeInt
 
 
 
+
+
+//Tercera pestaña:
+async function pegarLink() {
+  try {
+      const text = await navigator.clipboard.readText();
+      
+      // Validar si el enlace es de una plataforma de video común
+      if (esEnlaceDeVideo(text)) {
+          document.getElementById('youtube_url').value = text;
+          console.log("Enlace de video pegado desde el portapapeles:", text);
+      } else {
+          console.log("El enlace pegado no es un enlace de video válido.");
+          alert("Por favor, pegue un enlace válido de video.");
+      }
+  } catch (err) {
+      console.error("Error al pegar el enlace desde el portapapeles:", err);
+  }
+}
+
+// Función para verificar si el enlace es de un video
+function esEnlaceDeVideo(url) {
+  // Expresiones regulares para validar URLs de diferentes plataformas de video
+  const patronesVideo = [
+      /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/,               // YouTube
+      /^(https?:\/\/)?(m\.)?(youtube\.com|youtu\.be)\/.+$/,                 // YouTube móvil
+      /^(https?:\/\/)?(www\.)?vimeo\.com\/.+$/,                             // Vimeo
+      /^(https?:\/\/)?(www\.)?tiktok\.com\/.+$/,                            // TikTok
+      /^(https?:\/\/)?(vm\.)?tiktok\.com\/.+$/,                             // TikTok móvil
+      /^(https?:\/\/)?(www\.)?dailymotion\.com\/.+$/,                       // Dailymotion
+      /^(https?:\/\/)?(www\.)?facebook\.com\/.+\/videos\/.+$/,              // Facebook Videos
+      /^(https?:\/\/)?(www\.)?facebook\.com\/reel\/.+$/,                    // Facebook Reels
+      /^(https?:\/\/)?(m\.)?facebook\.com\/.+\/videos\/.+$/,                // Facebook Videos móvil
+      /^(https?:\/\/)?(m\.)?facebook\.com\/reel\/.+$/,                      // Facebook Reels móvil
+      /^(https?:\/\/)?(www\.)?facebook\.com\/share\/r\/.+$/,                // Facebook Compartidos (share links)
+      /^(https?:\/\/)?(fb\.watch)\/.+$/,                                    // Facebook Watch (fb.watch)
+      /^(https?:\/\/)?(www\.)?instagram\.com\/p\/.+$/,                      // Instagram Video (post)
+      /^(https?:\/\/)?(www\.)?instagram\.com\/reel\/.+$/,                   // Instagram Reels
+      /^(https?:\/\/)?(www\.)?twitter\.com\/.+\/status\/.+$/,               // Twitter Video (tweet)
+      /^(https?:\/\/)?(mobile\.)?twitter\.com\/.+\/status\/.+$/             // Twitter Video móvil
+  ];
+
+  // Comprobar si la URL coincide con alguno de los patrones
+  return patronesVideo.some((patron) => patron.test(url));
+}
+
+function guardarLink() {
+  const youtubeUrl = document.getElementById('youtube_url').value;
+  
+  if (youtubeUrl) {
+      // Guardar el enlace en localStorage
+      localStorage.setItem("videoLink", youtubeUrl);
+      console.log("Enlace guardado:", youtubeUrl);
+
+      // Cerrar el modal
+      document.getElementById('modal-video').style.display = 'none';
+  } else {
+      console.log("Por favor, ingresa un enlace válido.");
+  }
+}
+
+function borrarLink() {
+  // Borrar el enlace del localStorage
+  localStorage.removeItem('videoLink');
+  console.log("Enlace borrado");
+
+  // Limpiar el campo de entrada
+  document.getElementById('youtube_url').value = '';
+}
+
+function cerrarModal() {
+  // Cierra el modal sin realizar ninguna otra acción
+  document.getElementById('modal-video').style.display = 'none';
+  console.log("Modal cerrado sin guardar ni borrar el enlace.");
+}
+
+
+// ========================
+// Carga y actualización de mensaje adicional en textarea
+// ========================
+document.addEventListener("DOMContentLoaded", function() {
+  const messageTextarea = document.getElementById("message");
+  const charCounter = document.getElementById("char-counter");
+
+  // Cargar el mensaje guardado en localStorage al cargar la página
+  if (mensajeGuardado) {
+      messageTextarea.value = mensajeGuardado;
+      charCounter.textContent = `${mensajeGuardado.length} / 200`;
+  }
+
+  // Actualizar el contador y guardar en localStorage al escribir
+  messageTextarea.addEventListener("input", function() {
+      const currentLength = messageTextarea.value.length;
+      charCounter.textContent = `${currentLength} / 200`;
+      
+      // Guardar el mensaje en localStorage
+      localStorage.setItem("mensajeAdicional", messageTextarea.value);
+      console.log("Mensaje actualizado y guardado en localStorage:", messageTextarea.value);
+  });
+});
 

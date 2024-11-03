@@ -20,7 +20,7 @@
 <body>
     <main>
         <!-- primera pestaña: Personalización -->
-        <div class="container first-page" id="firstTab" >
+        <div class="container first-page" id="firstTab"  style="display: none;">
 
 
             <div style="display: inline-flex;" >
@@ -559,124 +559,122 @@
 
 
         <!-- Tercera pestaña: Personalización -->
-        <div id="thirdTab"  class=" third-page" class="hidden" style="display: none;">
+        <div id="thirdTab"  class=" third-page" class="hidden">
 
             
     
-            <div id="modal-video" style=" display: none; animation: fadein 0.7s ease;
-        position: absolute;
-        max-width: 290px;
-        background: white;
-        height: 342px;
-        width: calc(100% - 20px);
-        justify-self: center;
-        z-index: 100;
-        align-self: center;
-        border: 1px solid;
-        border-radius: 14px;
-        padding: 12px;
-        box-shadow: 0 0 1000px 0 #0000007d;    top: 148px;
-    ">
-                <div style="
-        font-weight: 600;
-        margin-bottom: 10px;
-    ">Añadir Video Youtube
-                </div>
+            <div id="modal-video" style="display: none; animation: fadein 0.7s ease;
+            position: absolute;
+            max-width: 250px;
+            background: #fff;
+            height: 460px;
+            width: calc(100% - 20px);
+            justify-self: center;
+            z-index: 100;
+            align-self: center;
+            border: 2px solid;
+            border-radius: 14px;
+            padding: 12px;
+            box-shadow: 0 0 1000px 0 #0000007d;
+            top: 80px;">
+            
+            
+            <div style=" padding: 15px;" id="url-video">Introduce la URL del video.</div>
+            <input id="youtube_url" type="url" class="input-rosify" style="height: 40px;border:2px solid #fc1e68 ; border-radius: 12px; width: 90%; box-sizing: border-box;" placeholder="https://www.video.com/video">
+            
+            <!-- Botón para Pegar -->
+            <div id="pegarlinkvideo" class="button-bottom grow-click" onclick="pegarLink()" style="
                 
-                <div>Introduce la URL del video.</div>
-                <input id="youtube_url" value="" type="url" class="input-rosify" style="height: 40px;
-        border-radius: 12px;" onchange="youtube_url=document.getElementById('youtube_url').value">
-    
-                <label class="button-bottom grow-click" onclick="URL_Youtube()" style="
-        margin-top: 20px;
-        font-size: 15px;display: block;
-        height: 56px;
-        line-height: 56px;
-    ">Cargar video
+                color: #fff;
+                border: none;
+                font-size: 15px;
+                height: 54px;
+                line-height: 54px;
+                text-align: center;
+                cursor: pointer;
+                border-radius: 10px;
+                width: 100%;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                ">
+                Pegar
+            </div>
+        
+            <!-- Botones de Guardar, Borrar y Salir -->
+            <div  style="display: flex; flex-direction: column; gap: 10px;">
+                <div id="guardarlinkvideo" class="button-bottom grow-click" onclick="guardarLink()" style="
                     
-    
-    
+                    color: #fff;
+                    border: none;
+                    font-size: 15px;
+                    height: 54px;
+                    line-height: 54px;
+                    text-align: center;
+                    cursor: pointer;
+                    border-radius: 10px;
+                    width: 100%;">
+                    Guardar
+                </div>
+                <div id="borrarlinkvideo" class="button-bottom grow-click" onclick="borrarLink()" style="
                     
+                    color: #fff;
+                    border: none;
+                    font-size: 15px;
+                    height: 54px;
+                    line-height: 54px;
+                    text-align: center;
+                    cursor: pointer;
+                    border-radius: 10px;
+                    width: 100%;">
+                    Borrar
+                </div>
+                <div id="salirlinkvideo" class="button-bottom grow-click" onclick="cerrarModal()" style="
                     
-                    
-                    
-                    
-    
-                </label>
-                <div class="button-bottom grow-click" onclick="document.getElementById('modal-video').style.display='none'" style="
-        margin-top: 10px;
-        background: white;
-        color: black;
-        border: 2px solid;
-        font-size: 15px;
-        height: 54px;
-        line-height: 56px;
-    ">Cancelar
+                    color: #fff;
+                    border: none;
+                    font-size: 15px;
+                    height: 54px;
+                    line-height: 54px;
+                    text-align: center;
+                    cursor: pointer;
+                    border-radius: 10px;
+                    width: 100%;">
+                    Salir
                 </div>
             </div>
+        </div>
+        
+        
+
+
     
     
-            <div id="label-image" class="image-container">
-    
+            <div id="label-image" class="image-container" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
                 <div id="video-picture-btns" style="display: initial;">
-    
-                    
-    
                     <div id="agregar-video" onclick="document.getElementById('modal-video').style.display='initial';document.getElementById('modal-video').style.opacity = 1;" class="svg-form-uploa bg-strong-color" style="
-        border-radius: 11px;
-        font-size: 16px;
-        color: white;
-        gap: 17px;
-        display: flex;
-        padding: 8px;
-        align-items: center;
-        width: 70%;
-        margin: auto;
-        margin-bottom: 20px;
-    ">
-    
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" style="
-        height: 30px;
-        margin: 2px 6px;
+    border-radius: 11px;
+    font-size: 16px;
+    color: white;
+    gap: 8px;
+    display: flex;
+    padding: 8px 16px;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    margin: auto;
+    margin-bottom: 20px;
+    white-space: nowrap;
+">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" style="
+        height: 24px;
+        margin-right: 8px;
         fill: white;
     ">
-                            <path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path>
-                        </svg>
-                        <div>Añadir Video</div>
-    
+        <path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path>
+    </svg>
+    <div>Añadir Video</div>
                     </div>
-    
                 </div>
-    
-    
-                <img loading="lazy" id="img-upload" src="blob:https://www.rosify.org/51649262-04fc-46aa-bd0c-1fecdee46e91" class="img-upload" width="100%" style="    height: auto;
-        align-self: center;">
-    
-    
-                <iframe id="youtube-frame1" class="video-upload" style="width: 100%; display:none; height:100%;" src="https://www.youtube.com/embed/" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
-    
-    
-            </div>
-    
-            <div onclick="ChangePicture()" id="change-picture" class="svg-form-upload bg-strong-color" style="display: none;">
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                <div>Cambiar Video/Imagen</div>
-                
             </div>
     
     
@@ -684,38 +682,19 @@
             <div id="section-letter" style="display: block;   ">
                 <div class="p-24 pb-0" style="padding-top: 0px; margin-top:15px;">
                     <h2 style="font-size: 30px;font-weight: 600;text-align: left;color: #000;line-height: 38px; margin: auto">
-                        Mensaje adicional<br>
-                        con foto
-                        
+                        Mensaje adicional
                     </h2>
-                    
-    
-    
                 </div>
     
     
-                <div class="" style="height: 180px;">
-    
+                <div style="height: 180px;">
                     <div class="flex justify-between">
-                        <div class="label-float">Tu mensaje:</div>
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
+                        <label for="message" class="label-float" style="display: block; margin-bottom: 8px;">Tu mensaje:</label>
                     </div>
-                    <textarea id="message" value="''" class="input-rosify" style="height: 120px;font-size: 16px;
-        padding: 14px;
-        width: calc(100% - 82px);" onchange="message=document.getElementById('message').value"></textarea>
-    
-    
-                    <input accept="image/gif,image/jpeg,image/png,image/svg+xml" id="upload-image" onchange=" Upload(this)" type="file" style="opacity: 0; height: 0px;">
-    
-    
+                    <textarea id="message" class="input-rosify" maxlength="300" style="height: 120px; font-size: 16px; padding: 14px; width: calc(100% - 82px); border: 1px solid #ccc; transition: border-color 0.3s;" placeholder="Escribe tu mensaje aquí..."></textarea>
+                    <div id="char-counter" style="text-align: right; font-size: 14px; color: #666;">0 / 300</div>
                 </div>
+            
     
             </div>
     

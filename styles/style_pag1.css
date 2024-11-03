@@ -1,6 +1,6 @@
 *{
     font-family: 'Cascadia Code',  monospace;
-    -webkit-font-family: 'Cascadia Code',  monospace;
+    -webkit-font-family: 'Cascadia Code',  monospace;;
 }
 body {
     scroll-behavior: smooth;
@@ -25,19 +25,11 @@ main {
 
 	50% {
 		transform: scale(1.1);
-		-webkit-transform: scale(1.1);
-		-moz-transform: scale(1.1);
-		-ms-transform: scale(1.1);
-		-o-transform: scale(1.1);
-}
+	}
 
 	100% {
-		transform: scale(1);
-		-webkit-transform: scale(1);
-		-moz-transform: scale(1);
-		-ms-transform: scale(1);
-		-o-transform: scale(1);
-}
+		transform: scale(1);         
+	}
 }
 #selectRose{
     animation: myAnim 1s ease 0s 1 normal none;
@@ -138,8 +130,8 @@ margin: auto;
 }
 
 h1 {
-    font-size: 3vw;
     margin-bottom: 20px;
+    font: bold 40px "Cascadia code", serif;
 }
 
 p {

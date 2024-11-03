@@ -15,6 +15,8 @@ let previewText = document.querySelector(".preview-text");
 let previewLabel = document.querySelector(".preview-label");
 let selectedRoseContainer = document.getElementById("integer-rosa");
 
+let clickCount = 0;
+
 document.querySelectorAll(".rose").forEach((rose) => {
   rose.addEventListener("click", function () {
     selectRose(this);
@@ -203,6 +205,162 @@ document.getElementById("confirmBtn").addEventListener("click", function () {
     closeModal(); // Cerrar el modal
 });
 
+function ChangeIntention(intentionIndex, intentionId) {
+  // Ocultar todos los mensajes de intención primero
+  const allMessages = document.querySelectorAll('#page-2-image-container .preview-text span');
+  allMessages.forEach(message => message.style.display = 'none');
+  
+  // Mostrar el mensaje correspondiente a la intención seleccionada
+  const selectedMessage = document.querySelector(`.si-${intentionIndex}`);
+  if (selectedMessage) {
+      selectedMessage.style.display = 'inline';
+  }
+  
+  // Mantener el nombre en la vista previa
+  const nameInput = document.getElementById("name_gift").value.trim();
+  if (nameInput) {
+      document.getElementById("name-vista-previa").textContent = nameInput;
+      document.getElementById("name-vista-previa").style.display = 'inline';
+  }
+
+  // Quitar la clase de borde de color de todas las intenciones
+  document.querySelectorAll('.select-intention').forEach(intention => {
+      intention.classList.remove('selected-intention');
+      intention.style.borderColor = ""; // Limpiar el color de borde
+  });
+
+  // Guardar la intención seleccionada en localStorage
+  localStorage.setItem("selectedIntention", intentionId);
+
+  // Agregar la clase de borde de color solo a la intención seleccionada
+  const selectedIntention = document.getElementById(intentionId);
+  selectedIntention.classList.add('selected-intention');
+  
+  // Aplicar el color de la rosa seleccionada al borde de la intención
+  if (window.currentRoseColor) {
+      selectedIntention.style.borderColor = window.currentRoseColor; // Usa el color de la rosa actual
+  } else {
+      selectedIntention.style.borderColor = "#FF5733"; // Color predeterminado si no hay rosa seleccionada
+  }
+}
+
+
+
+
+
+
+
+// Escuchar el evento de clic en el botón "Continuar" para avanzar a la siguiente sección
+document.getElementById("savenamesbtn").addEventListener("click", function() {
+  // Obtener el valor del campo de entrada de nombre
+  const nameInput = document.getElementById("name_gift").value.trim();
+  const selectedIntention = localStorage.getItem("selectedIntention");
+
+  // Verificar si el campo de nombre está vacío o si no hay intención seleccionada
+  if (nameInput === "") {
+      alert("Por favor, ingresa un nombre o apodo antes de continuar.");
+  } else if (!selectedIntention || selectedIntention === "elige-intencion") {
+      alert("Por favor, selecciona una intención antes de continuar.");
+  } else {
+      // Si el nombre ha sido ingresado y hay una intención seleccionada, incrementar el contador y continuar con la lógica
+      if (clickCount === 0) {
+          showIntentionSection();
+          clickCount++;
+      } else if (clickCount === 1) {
+          segundaFuncion();
+          clickCount = 0; // Reinicia el contador para alternar nuevamente
+      }
+  }
+});
+
+function showIntentionSection() {
+  // Obtén el valor del campo de entrada
+  const nameInput = document.getElementById("name_gift").value.trim();
+  
+  // Verifica si el campo está vacío
+  if (nameInput === "") {
+      alert("Por favor, ingresa un nombre o apodo antes de continuar.");
+  } else {
+      // Guardar el nombre en localStorage
+      localStorage.setItem("selectedName", nameInput);
+
+      // Oculta el primer div
+      const sectionName = document.getElementById("section-name");
+      sectionName.style.display = "none";
+
+      // Muestra el segundo div con animación
+      const sectionIntention = document.getElementById("section-intention");
+      sectionIntention.style.display = "block";
+      sectionIntention.classList.add("animated"); // Agrega la clase de animación
+
+      // Quitar la clase de animación después de que termine
+      setTimeout(() => {
+          sectionIntention.classList.remove("animated");
+      }, 900); // Tiempo de la animación en milisegundos
+  }
+}
+
+
+function segundaFuncion() {
+  // Obtener la intención seleccionada desde el localStorage
+  const selectedIntention = localStorage.getItem("selectedIntention");
+
+  // Verificar si se ha cambiado la intención desde "elige-intencion"
+  const defaultMessage = document.getElementById("elige-intencion").style.display;
+
+  if (!selectedIntention || defaultMessage !== "none") {
+  } else {
+    // Si hay una intención seleccionada y el mensaje ha cambiado, muestra la tercera pestaña
+    console.log("Intención seleccionada:", selectedIntention);
+
+    // Oculta la segunda pestaña
+    const sectionIntention = document.getElementById("secondTab");
+    sectionIntention.style.display = "none";
+
+    // Muestra la tercera pestaña con animación
+    const thirdTab = document.getElementById("thirdTab");
+    thirdTab.style.display = "block";
+    thirdTab.classList.add("animated");
+
+    // Quitar la clase de animación después de que termine
+    setTimeout(() => {
+      thirdTab.classList.remove("animated");
+    }, 900);
+
+    // Cargar el resumen de la selección en la tercera pestaña
+    const name = localStorage.getItem("selectedName") || "Nombre no ingresado";
+    document.getElementById("summaryText").textContent = `Has ingresado el nombre: ${name} y has seleccionado la intención: ${selectedIntention}.`;
+  }
+}
+
+
+// Función para guardar la intención seleccionada y actualizar la vista previa
+function selectIntention(intentionIndex, intentionId) {
+  // Guardar la intención seleccionada en localStorage
+  localStorage.setItem("selectedIntention", intentionId);
+
+  // Ocultar el mensaje predeterminado y mostrar el mensaje correspondiente
+  document.querySelector(".si-x").style.display = "none"; // Oculta "elige una intención (siguiente)"
+  const allMessages = document.querySelectorAll(".preview-text span");
+  allMessages.forEach(msg => msg.style.display = "none"); // Ocultar todos los mensajes
+  
+  const selectedMessage = document.querySelector(`.si-${intentionIndex}`);
+  if (selectedMessage) {
+      selectedMessage.style.display = "inline"; // Mostrar el mensaje correspondiente a la intención seleccionada
+  }
+  
+  // Actualizar el nombre en la vista previa
+  const nameInput = document.getElementById("name_gift").value.trim();
+  document.getElementById("name-vista-previa").textContent = nameInput;
+}
+
+
+
+
+
+
+
+
 // Agregar evento de clic en la "X" para regresar a la primera pestaña
 document.getElementById("close-modal").addEventListener("click", function () {
   closeModal(); // Cerrar el modal
@@ -280,6 +438,11 @@ document.getElementById("backBtn").addEventListener("click", function () {
       previewLabel.style.transition = "opacity 0.7s ease";
     }, 10);
   });
+
+
+
+
+
   
 
 // Cargar el color seleccionado en la segunda pestaña
@@ -289,10 +452,12 @@ window.addEventListener("load", function () {
     document.getElementById("selectedRose").innerText = selectedColor;
     document.getElementById("selectedRose").style.color = selectedColor;
     document.getElementById("nameInput").style.borderColor = selectedColor;
-    document.getElementById("savenamesbtn").style.backgroundColor =
-      selectedColor;
+    document.getElementById("savenamesbtn").style.backgroundColor = selectedColor;
   }
 });
+
+
+
 
 const customizeButton = document.getElementById("highlight-box");
 const customizeButton1 = document.getElementById("integer-rosa");
@@ -376,83 +541,15 @@ inputName.addEventListener('input', function () {
     namePlaceholder.textContent = enteredName; // Actualizar el nombre en la vista previa
 });
 
-function showIntentionSection() {
-    // Obtén el valor del campo de entrada
-    const nameInput = document.getElementById("name_gift").value.trim();
-    
-    // Verifica si el campo está vacío
-    if (nameInput === "") {
-        alert("Por favor, ingresa un nombre o apodo antes de continuar.");
-    } else {
-        // Guardar el nombre en localStorage
-        localStorage.setItem("selectedName", nameInput);
-
-        // Oculta el primer div
-        const sectionName = document.getElementById("section-name");
-        sectionName.style.display = "none";
-
-        // Muestra el segundo div con animación
-        const sectionIntention = document.getElementById("section-intention");
-        sectionIntention.style.display = "block";
-        sectionIntention.classList.add("animated"); // Agrega la clase de animación
-
-        // Quitar la clase de animación después de que termine
-        setTimeout(() => {
-            sectionIntention.classList.remove("animated");
-        }, 900); // Tiempo de la animación en milisegundos
-    }
-}
-
-
-// Asigna el evento de clic al botón "Continuar"
-document.getElementById("savenamesbtn").addEventListener("click", showIntentionSection);
-
-
-function ChangeIntention(intentionIndex, intentionId) {
-    // Ocultar todos los mensajes de intención primero
-    const allMessages = document.querySelectorAll('#page-2-image-container .preview-text span');
-    allMessages.forEach(message => message.style.display = 'none');
-    
-    // Mostrar el mensaje correspondiente a la intención seleccionada
-    const selectedMessage = document.querySelector(`.si-${intentionIndex}`);
-    if (selectedMessage) {
-        selectedMessage.style.display = 'inline';
-    }
-    
-    // Mantener el nombre en la vista previa
-    const nameInput = document.getElementById("name_gift").value.trim();
-    if (nameInput) {
-        document.getElementById("name-vista-previa").textContent = nameInput;
-        document.getElementById("name-vista-previa").style.display = 'inline';
-    }
-
-    // Quitar la clase de borde de color de todas las intenciones
-    document.querySelectorAll('.select-intention').forEach(intention => {
-        intention.classList.remove('selected-intention');
-        intention.style.borderColor = ""; // Limpiar el color de borde
-    });
-
-    // Guardar la intención seleccionada en localStorage
-    localStorage.setItem("selectedIntention", intentionId);
-
-    document.querySelectorAll('.select-intention').forEach(intention => {
-        intention.classList.remove('selected-intention');
-        intention.style.borderColor = ""; 
-    });
 
 
 
-    // Agregar la clase de borde de color solo a la intención seleccionada
-    const selectedIntention = document.getElementById(intentionId);
-    selectedIntention.classList.add('selected-intention');
-    
-    // Aplicar el color de la rosa seleccionada al borde de la intención
-    if (window.currentRoseColor) {
-        selectedIntention.style.borderColor = window.currentRoseColor; // Usa el color de la rosa actual
-    } else {
-        selectedIntention.style.borderColor = "#FF5733"; // Color predeterminado si no hay rosa seleccionada
-    }
-}
+
+
+
+
+
+
 
 
 const storedName = localStorage.getItem("selectedName");
@@ -486,7 +583,7 @@ document.getElementById("intention15").addEventListener("click", () => ChangeInt
 document.getElementById("intention16").addEventListener("click", () => ChangeIntention(15, "intention16"));
 
 
-document.getElementById("nextBtnPag2").addEventListener("click", function () {
+document.getElementById("nextBtnPag2-----1").addEventListener("click", function () { //MODIFICAR ESTO
     // Ocultar la segunda pestaña
    
     document.getElementById("secondTab").style.display = "none";
@@ -506,4 +603,6 @@ document.getElementById("nextBtnPag2").addEventListener("click", function () {
     const intention = localStorage.getItem("selectedIntention") || "Intención no seleccionada";
     document.getElementById("summaryText").textContent = `Has ingresado el nombre: ${name} y has seleccionado la intención: ${intention}.`;
 });
+
+
 

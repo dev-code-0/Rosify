@@ -13,16 +13,17 @@
 
         <link rel="stylesheet" href="./styles/style_pag1.css">
         <link rel="stylesheet" href="./styles/style_pag2.css">
+        <link rel="stylesheet" href="./styles/style_pag3.css">
     
 </head>
 
 <body>
     <main>
         <!-- primera pestaña: Personalización -->
-        <div class="container first-page" id="firstTab"  >
+        <div class="container first-page" id="firstTab" >
 
 
-            <div11 style="display: inline-flex;" >
+            <div style="display: inline-flex;" >
                 <svg xmlns="http://www.w3.org/2000/svg" id="icono" class="highlight"
                     xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1em" height="1em"
                     viewBox="0 0 128 128" xml:space="preserve"
@@ -86,9 +87,9 @@
                         stroke-linecap="round">
                     </path>
                 </svg>
-            </div11>
+            </div>
             <div>
-                <h1>Regalo Virtual para <br> 
+                <h1 >Regalo Virtual para <br> 
                     <span class="highlight" id="amigos">amigos</span> y <span class="highlight" id="parejas">parejas</span></h1>
                 <p>Elige una <span class="highlight" id="rosa"> rosa</span> o detalle gratis</p>
             </div>
@@ -199,21 +200,8 @@
         </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
         <!-- Segunda pestaña: Personalización -->
-        <div id="secondTab" class=" second-page" style="display:none;">
+        <div id="secondTab" class=" second-page"  style="display: none;">
 
             <div id="page-2-image-container" class="image-container">
                 <div id="integer-rosa" class="integer-rosa-img">
@@ -548,7 +536,7 @@
 
 
 
-            <div class="p-24 " id="nextBtn">
+            <div class="p-24 " id="nextBtnPag2">
                 <div class="button-bottom press-effect" id="savenamesbtn" onclick="SaveNames()">
                     Continuar
                 </div>
@@ -561,20 +549,191 @@
 
 
             <style>
-                .image-container {
-                    border-radius: 20px;
-                    border: none;
-                    align-self: center;
-                    padding: 16px 0px;
-                    width: calc(100% - 46px);
-                    margin: 22px;
-                    height: 150px;
-                    box-shadow: none;
-                    background: #ffc7c7;
-                }
+                
             </style>
 
         </div>
+
+
+
+        <!-- Tercera pestaña: Personalización -->
+        <div id="thirdTab"  class=" third-page" class="hidden" style="display: none;">
+
+            
+    
+            <div id="modal-video" style=" display: none; animation: fadein 0.7s ease;
+        position: absolute;
+        max-width: 290px;
+        background: white;
+        height: 342px;
+        width: calc(100% - 20px);
+        justify-self: center;
+        z-index: 100;
+        align-self: center;
+        border: 1px solid;
+        border-radius: 14px;
+        padding: 12px;
+        box-shadow: 0 0 1000px 0 #0000007d;    top: 148px;
+    ">
+                <div style="
+        font-weight: 600;
+        margin-bottom: 10px;
+    ">Añadir Video Youtube
+                </div>
+                
+                <div>Introduce la URL del video.</div>
+                <input id="youtube_url" value="" type="url" class="input-rosify" style="height: 40px;
+        border-radius: 12px;" onchange="youtube_url=document.getElementById('youtube_url').value">
+    
+                <label class="button-bottom grow-click" onclick="URL_Youtube()" style="
+        margin-top: 20px;
+        font-size: 15px;display: block;
+        height: 56px;
+        line-height: 56px;
+    ">Cargar video
+                    
+    
+    
+                    
+                    
+                    
+                    
+                    
+    
+                </label>
+                <div class="button-bottom grow-click" onclick="document.getElementById('modal-video').style.display='none'" style="
+        margin-top: 10px;
+        background: white;
+        color: black;
+        border: 2px solid;
+        font-size: 15px;
+        height: 54px;
+        line-height: 56px;
+    ">Cancelar
+                </div>
+            </div>
+    
+    
+            <div id="label-image" class="image-container">
+    
+                <div id="video-picture-btns" style="display: initial;">
+    
+                    
+    
+                    <div id="agregar-video" onclick="document.getElementById('modal-video').style.display='initial';document.getElementById('modal-video').style.opacity = 1;" class="svg-form-uploa bg-strong-color" style="
+        border-radius: 11px;
+        font-size: 16px;
+        color: white;
+        gap: 17px;
+        display: flex;
+        padding: 8px;
+        align-items: center;
+        width: 70%;
+        margin: auto;
+        margin-bottom: 20px;
+    ">
+    
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" style="
+        height: 30px;
+        margin: 2px 6px;
+        fill: white;
+    ">
+                            <path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path>
+                        </svg>
+                        <div>Añadir Video</div>
+    
+                    </div>
+    
+                </div>
+    
+    
+                <img loading="lazy" id="img-upload" src="blob:https://www.rosify.org/51649262-04fc-46aa-bd0c-1fecdee46e91" class="img-upload" width="100%" style="    height: auto;
+        align-self: center;">
+    
+    
+                <iframe id="youtube-frame1" class="video-upload" style="width: 100%; display:none; height:100%;" src="https://www.youtube.com/embed/" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+    
+    
+            </div>
+    
+            <div onclick="ChangePicture()" id="change-picture" class="svg-form-upload bg-strong-color" style="display: none;">
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <div>Cambiar Video/Imagen</div>
+                
+            </div>
+    
+    
+            
+            <div id="section-letter" style="display: block;   ">
+                <div class="p-24 pb-0" style="padding-top: 0px; margin-top:15px;">
+                    <h2 style="font-size: 30px;font-weight: 600;text-align: left;color: #000;line-height: 38px; margin: auto">
+                        Mensaje adicional<br>
+                        con foto
+                        
+                    </h2>
+                    
+    
+    
+                </div>
+    
+    
+                <div class="" style="height: 180px;">
+    
+                    <div class="flex justify-between">
+                        <div class="label-float">Tu mensaje:</div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                    </div>
+                    <textarea id="message" value="''" class="input-rosify" style="height: 120px;font-size: 16px;
+        padding: 14px;
+        width: calc(100% - 82px);" onchange="message=document.getElementById('message').value"></textarea>
+    
+    
+                    <input accept="image/gif,image/jpeg,image/png,image/svg+xml" id="upload-image" onchange=" Upload(this)" type="file" style="opacity: 0; height: 0px;">
+    
+    
+                </div>
+    
+            </div>
+    
+    
+            <div class="p-24">
+    
+    
+                
+                
+                
+    
+                <div id="btn-letter" class="button-bottom grow-click" onclick="SaveLetter(1)">
+                    Continuar
+                </div>
+    
+            </div>
+    
+    
+        </div>
+
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.1.0/chroma.min.js"></script>
 

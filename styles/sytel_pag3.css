@@ -1,0 +1,33 @@
+
+.grow-click {
+    transition: 0.4s;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.label-float {
+    width: fit-content;
+    padding: 0px 11px;
+    letter-spacing: 1px;
+    font-size: 16px;
+    transform: translate(44px, 12px) !important;
+    transition: 0.7s;
+    /* background: #fafafa !important; */
+    font-weight: 500;
+    color: #bb0303;
+    border-radius: 10px;
+    background-image: linear-gradient(360deg, white 37%, #fafafa 60%);
+}
+
+.input-rosify {
+    width: calc(100% - 62px);
+    margin: 0px 15px;
+    height: 60px;
+    border-radius: 20px;
+    border: 2px solid #d9d9d9;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    padding-left: 12px;
+}

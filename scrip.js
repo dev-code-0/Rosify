@@ -103,6 +103,8 @@ var swiper = new Swiper(".mySwiper", {
       document.getElementById("vista-previa").style.backgroundColor = activeColor;
       document.getElementById("name-vista-previa").style.color = activeColor;
       document.getElementById("elige-intencion").style.color = activeColor;
+      document.getElementById("agregar-video").style.backgroundColor = activeColor;
+      document.getElementById("btn-letter").style.backgroundColor = activeColor;
       
       for( let i = 0; i <=15; i++){
         document.getElementById(`s${i}`).style.color = activeColor;
@@ -303,6 +305,7 @@ swiper.on("slideChange", function () {
   // Mueve el cuadro de resalte detrás de la rosa activa
   const highlightBox = document.getElementById("highlight-box");
   const page2 = document.getElementById("page-2-image-container");
+  const labelImage = document.getElementById("label-image");
 
   // Cambia el color del cuadro según la rosa seleccionada
   let roseName = activeRose.querySelector("img").alt; // Obtiene el nombre de la rosa del atributo alt
@@ -310,34 +313,42 @@ swiper.on("slideChange", function () {
     case "Rosa roja":
       highlightBox.style.backgroundColor = "#ffdada"; // Rojo claro
       page2.style.backgroundColor = "#ffdada"; // Rojo claro
+      labelImage.style.backgroundColor = "#ffdada"; // Rojo claro
       break;
     case "Rosa naranja":
       highlightBox.style.backgroundColor = "#ffe3c1"; // Naranja claro
       page2.style.backgroundColor = "#ffe3c1"; // Naranja claro
+      labelImage.style.backgroundColor = "#ffe3c1"; // Naranja claro
       break;
     case "Rosa violeta":
       highlightBox.style.backgroundColor = "#cfcee7"; // Violeta claro
       page2.style.backgroundColor = "#cfcee7"; // Violeta claro
+      labelImage.style.backgroundColor = "#cfcee7"; // Violeta claro
       break;
     case "Rosa amarilla":
       highlightBox.style.backgroundColor = "#fef4a7"; // Amarillo claro
       page2.style.backgroundColor = "#fcf7d1"; // Amarillo claro
+      labelImage.style.backgroundColor = "#fcf7d1"; // Amarillo claro
       break;
     case "Rosa azul":
       highlightBox.style.backgroundColor = "#d3ebff"; // Azul claro
       page2.style.backgroundColor = "#d3ebff"; // Azul claro
+      labelImage.style.backgroundColor = "#d3ebff"; // Azul claro
       break;
     case "Rosa blanca":
       highlightBox.style.backgroundColor = "#dcdcdc"; // Blanco
       page2.style.backgroundColor = "#dcdcdc"; // Blanco
+      labelImage.style.backgroundColor = "#dcdcdc"; // Blanco
       break;
     case "Rosa rosada":
       highlightBox.style.backgroundColor = "#f0c9dc"; // Rosa claro
       page2.style.backgroundColor = "#f0c9dc"; // Rosa claro
+      labelImage.style.backgroundColor = "#f0c9dc"; // Rosa claro
       break;
     default:
       highlightBox.style.backgroundColor = "#ffebee"; // Color por defecto
       page2.style.backgroundColor = "#ffebee"; // Color por defecto
+      labelImage.style.backgroundColor = "#ffebee"; // Color por defecto
       break;
   }
 });
@@ -373,6 +384,9 @@ function showIntentionSection() {
     if (nameInput === "") {
         alert("Por favor, ingresa un nombre o apodo antes de continuar.");
     } else {
+        // Guardar el nombre en localStorage
+        localStorage.setItem("selectedName", nameInput);
+
         // Oculta el primer div
         const sectionName = document.getElementById("section-name");
         sectionName.style.display = "none";
@@ -418,6 +432,16 @@ function ChangeIntention(intentionIndex, intentionId) {
         intention.style.borderColor = ""; // Limpiar el color de borde
     });
 
+    // Guardar la intención seleccionada en localStorage
+    localStorage.setItem("selectedIntention", intentionId);
+
+    document.querySelectorAll('.select-intention').forEach(intention => {
+        intention.classList.remove('selected-intention');
+        intention.style.borderColor = ""; 
+    });
+
+
+
     // Agregar la clase de borde de color solo a la intención seleccionada
     const selectedIntention = document.getElementById(intentionId);
     selectedIntention.classList.add('selected-intention');
@@ -429,6 +453,18 @@ function ChangeIntention(intentionIndex, intentionId) {
         selectedIntention.style.borderColor = "#FF5733"; // Color predeterminado si no hay rosa seleccionada
     }
 }
+
+
+const storedName = localStorage.getItem("selectedName");
+const storedIntention = localStorage.getItem("selectedIntention");
+
+if (storedName) {
+    console.log("Nombre guardado:", storedName);
+}
+if (storedIntention) {
+    console.log("Intención guardada:", storedIntention);
+}
+
 
 
 
@@ -448,3 +484,26 @@ document.getElementById("intention9").addEventListener("click", () => ChangeInte
 document.getElementById("intention14").addEventListener("click", () => ChangeIntention(13, "intention14"));
 document.getElementById("intention15").addEventListener("click", () => ChangeIntention(14, "intention15"));
 document.getElementById("intention16").addEventListener("click", () => ChangeIntention(15, "intention16"));
+
+
+document.getElementById("nextBtnPag2").addEventListener("click", function () {
+    // Ocultar la segunda pestaña
+   
+    document.getElementById("secondTab").style.display = "none";
+
+    // Mostrar la tercera pestaña con animación
+    const thirdTab = document.getElementById("thirdTab");
+    thirdTab.style.display = "block";
+    thirdTab.classList.add("animated");
+
+    // Quitar la clase de animación después de que termine
+    setTimeout(() => {
+        thirdTab.classList.remove("animated");
+    }, 900);
+
+    // Cargar el resumen de la selección en la tercera pestaña
+    const name = localStorage.getItem("selectedName") || "Nombre no ingresado";
+    const intention = localStorage.getItem("selectedIntention") || "Intención no seleccionada";
+    document.getElementById("summaryText").textContent = `Has ingresado el nombre: ${name} y has seleccionado la intención: ${intention}.`;
+});
+

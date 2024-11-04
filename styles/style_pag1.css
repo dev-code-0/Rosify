@@ -3,7 +3,12 @@
     -webkit-font-family: 'Cascadia Code',  monospace;;
 }
 body {
+    font-family: 'Cascadia Code', monospace;
     scroll-behavior: smooth;
+    -webkit-touch-callout: none; /* Evita la acción predeterminada de los toques largos en iOS */
+    -webkit-user-select: none;   /* Evita la selección de texto en iOS */
+    -ms-user-select: none;       /* Evita la selección de texto en IE */
+    user-select: none;           /* Evita la selección de texto en otros navegadores */
 }
 
 main {

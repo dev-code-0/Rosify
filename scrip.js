@@ -674,16 +674,17 @@ document.addEventListener("DOMContentLoaded", function() {
   const messageTextarea = document.getElementById("message");
   const charCounter = document.getElementById("char-counter");
 
-  // Cargar el mensaje guardado en localStorage al cargar la página
-  if (mensajeGuardado) {
-      messageTextarea.value = mensajeGuardado;
-      charCounter.textContent = `${mensajeGuardado.length} / 200`;
-  }
+  // Limpiar el mensaje en localStorage al cargar la página
+  localStorage.removeItem("mensajeAdicional");
+
+  // Asegurarse de que el textarea y el contador comiencen vacíos
+  messageTextarea.value = "";
+  charCounter.textContent = "0 / 300";
 
   // Actualizar el contador y guardar en localStorage al escribir
   messageTextarea.addEventListener("input", function() {
       const currentLength = messageTextarea.value.length;
-      charCounter.textContent = `${currentLength} / 200`;
+      charCounter.textContent = `${currentLength} / 300`;
       
       // Guardar el mensaje en localStorage
       localStorage.setItem("mensajeAdicional", messageTextarea.value);

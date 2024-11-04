@@ -563,20 +563,22 @@
 
             
     
-            <div id="modal-video" style="display: none; animation: fadein 0.7s ease;
-            position: absolute;
-            max-width: 250px;
-            background: #fff;
-            height: 460px;
-            width: calc(100% - 20px);
-            justify-self: center;
-            z-index: 100;
-            align-self: center;
-            border: 2px solid;
-            border-radius: 14px;
-            padding: 12px;
-            box-shadow: 0 0 1000px 0 #0000007d;
-            top: 80px;">
+            <div id="modal-video" 
+    style="display: none; 
+           animation: fadein 0.7s ease;
+           position: fixed; /* Cambiado de absolute a fixed */
+           top: 50%; /* Centrado verticalmente */
+           left: 50%; /* Centrado horizontalmente */
+           transform: translate(-50%, -50%); /* Ajuste para centrar */
+           max-width: 250px;
+           background: #fff;
+           height: 460px;
+           width: 80%;
+           z-index: 100;
+           border: 2px solid;
+           border-radius: 14px;
+           padding: 12px;
+           box-shadow: 0 0 1000px 0 #0000007d;">
             
             
             <div style=" padding: 15px;" id="url-video">Introduce la URL del video.</div>

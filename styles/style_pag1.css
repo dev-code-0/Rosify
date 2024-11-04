@@ -139,7 +139,7 @@ margin: auto;
 
 h1 {
     margin-bottom: 20px;
-    font: bold 40px "Cascadia code", serif;
+    /* font: bold 40px "Cascadia code", serif; */
 }
 
 p {

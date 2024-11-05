@@ -38,6 +38,7 @@
 .preview-text {
     font-size: 20px;
     font-weight: 600;
+    font-weight: bold;
     line-height: 24px;
     height: 120px;
     opacity: 0;
@@ -73,9 +74,7 @@
     display: inline; /* Mostrar la intención */
     opacity: 1; /* Aparición con efecto */
 }
-.bg-strong-color{
-    background: #00ff0c;
-}
+
 .preview-label{
     border-radius: 17px;
     color: white;

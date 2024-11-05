@@ -104,6 +104,8 @@ var swiper = new Swiper(".mySwiper", {
       document.getElementById("backBtn").style.color = activeColor;
       document.getElementById("confirmBtn").style.backgroundColor = activeColor;
       document.getElementById("vista-previa").style.backgroundColor = activeColor;
+      document.getElementById("name_gift").style.borderColor = activeColor;
+      document.getElementById("name_gift").style.caretColor = activeColor;
       document.getElementById("name-vista-previa").style.color = activeColor;
       document.getElementById("elige-intencion").style.color = activeColor;
       document.getElementById("agregar-video").style.backgroundColor = activeColor;
@@ -117,6 +119,7 @@ var swiper = new Swiper(".mySwiper", {
       document.getElementById("salirlinkvideo").style.backgroundColor = activeColor;
       document.getElementById("youtube_url").style.borderColor = activeColor;
       document.getElementById("message").style.borderColor = activeColor;
+      document.getElementById("message").style.caretColor = activeColor;
       
 
 

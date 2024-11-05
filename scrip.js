@@ -91,6 +91,9 @@ var swiper = new Swiper(".mySwiper", {
     window.currentRoseColor = activeColor;
       // Obtiene el color de la rosa activa desde el atributo "data-color".
 
+
+      
+
       // Mapa de colores con los nombres en español.
 
       document.getElementById("amigos").style.color = activeColor;
@@ -120,6 +123,9 @@ var swiper = new Swiper(".mySwiper", {
       document.getElementById("youtube_url").style.borderColor = activeColor;
       document.getElementById("message").style.borderColor = activeColor;
       document.getElementById("message").style.caretColor = activeColor;
+      document.getElementById("btn-si").style.backgroundColor = activeColor;
+      document.getElementById("btn-no").style.backgroundColor = activeColor;
+      document.getElementById("finishBtn").style.backgroundColor = activeColor;
       
 
 
@@ -128,11 +134,8 @@ var swiper = new Swiper(".mySwiper", {
       }
       // Actualiza el color de los elementos según el color de la rosa activa.
 
-      // ========================
-      // Guardar la URL y el color de la rosa en el centro en localStorage
-      // ========================
-      localStorage.setItem("selectedRoseSrc", activeRose.src);
-      localStorage.setItem("selectedRoseColor", activeColor);
+      
+      
     },
   },
 });
@@ -355,6 +358,7 @@ document.getElementById("continuarPag3").addEventListener("click", goToThirdPage
 
 
 
+
 // Agregar evento de clic en la "X" para regresar a la primera pestaña
 document.getElementById("close-modal").addEventListener("click", function () {
   closeModal(); // Cerrar el modal
@@ -372,7 +376,9 @@ document.getElementById("confirmBtn").onclick = function () {
   const activeRoseSrc = activeRose.getAttribute("src"); // Obtiene la URL de la rosa
   const activeColor = activeRose.dataset.color;
 
-  // Guardar la URL y el color de la rosa seleccionada en localStorage
+  // ========================
+  // Guardar la URL y el color de la rosa en el centro en localStorage
+  // ========================
   localStorage.setItem("selectedRoseSrc", activeRoseSrc);
   localStorage.setItem("selectedRoseColor", activeColor);
 
@@ -470,6 +476,7 @@ swiper.on("slideChange", function () {
   const highlightBox = document.getElementById("highlight-box");
   const page2 = document.getElementById("page-2-image-container");
   const labelImage = document.getElementById("label-image");
+  const colorRamos = document.getElementById("color-ramos");
 
   // Cambia el color del cuadro según la rosa seleccionada
   let roseName = activeRose.querySelector("img").alt; // Obtiene el nombre de la rosa del atributo alt
@@ -478,41 +485,49 @@ swiper.on("slideChange", function () {
       highlightBox.style.backgroundColor = "#ffdada"; // Rojo claro
       page2.style.backgroundColor = "#ffdada"; // Rojo claro
       labelImage.style.backgroundColor = "#ffdada"; // Rojo claro
+      colorRamos.style.backgroundColor = "#ffdada"; // Rojo claro
       break;
     case "Rosa naranja":
       highlightBox.style.backgroundColor = "#ffe3c1"; // Naranja claro
       page2.style.backgroundColor = "#ffe3c1"; // Naranja claro
       labelImage.style.backgroundColor = "#ffe3c1"; // Naranja claro
+      colorRamos.style.backgroundColor = "#ffe3c1"; // Naranja claro
       break;
     case "Rosa violeta":
       highlightBox.style.backgroundColor = "#cfcee7"; // Violeta claro
       page2.style.backgroundColor = "#cfcee7"; // Violeta claro
       labelImage.style.backgroundColor = "#cfcee7"; // Violeta claro
+      colorRamos.style.backgroundColor = "#cfcee7"; // Violeta claro
       break;
     case "Rosa amarilla":
       highlightBox.style.backgroundColor = "#fef4a7"; // Amarillo claro
       page2.style.backgroundColor = "#fcf7d1"; // Amarillo claro
       labelImage.style.backgroundColor = "#fcf7d1"; // Amarillo claro
+      colorRamos.style.backgroundColor = "#fcf7d1"; // Amarillo claro
       break;
     case "Rosa azul":
       highlightBox.style.backgroundColor = "#d3ebff"; // Azul claro
       page2.style.backgroundColor = "#d3ebff"; // Azul claro
       labelImage.style.backgroundColor = "#d3ebff"; // Azul claro
+      colorRamos.style.backgroundColor = "#d3ebff"; // Azul claro
       break;
     case "Rosa blanca":
       highlightBox.style.backgroundColor = "#dcdcdc"; // Blanco
       page2.style.backgroundColor = "#dcdcdc"; // Blanco
       labelImage.style.backgroundColor = "#dcdcdc"; // Blanco
+      colorRamos.style.backgroundColor = "#dcdcdc"; // Blanco
       break;
     case "Rosa rosada":
       highlightBox.style.backgroundColor = "#f0c9dc"; // Rosa claro
       page2.style.backgroundColor = "#f0c9dc"; // Rosa claro
       labelImage.style.backgroundColor = "#f0c9dc"; // Rosa claro
+      colorRamos.style.backgroundColor = "#f0c9dc"; // Rosa claro
       break;
     default:
       highlightBox.style.backgroundColor = "#ffebee"; // Color por defecto
       page2.style.backgroundColor = "#ffebee"; // Color por defecto
       labelImage.style.backgroundColor = "#ffebee"; // Color por defecto
+      colorRamos.style.backgroundColor = "#ffebee"; // Color por defecto
       break;
   }
 });
@@ -551,25 +566,16 @@ const storedRoseSrc = localStorage.getItem("selectedRoseSrc");
 const storedRoseColor = localStorage.getItem("selectedRoseColor");
 const storedVideo = localStorage.getItem("videoLink");
 const mensajeGuardado = localStorage.getItem("mensajeAdicional");
+const storedBouquetOption = localStorage.getItem("selectedBouquetOption"); // Guarda si el usuario eligió el ramo
 
-if (storedName) {
-    console.log("Nombre guardado:", storedName);
-}
-if (storedIntention) {
-    console.log("Intención guardada:", storedIntention);
-}
-if (storedRoseSrc) {
-    console.log("URL de la rosa guardada:", storedRoseSrc);
-}
-if (storedRoseColor) {
-    console.log("Color de la rosa guardado:", storedRoseColor);
-} 
-if (storedVideo) {
-    console.log("Enlace de video guardado:", storedVideo);
-}
-if (mensajeGuardado) {
-    console.log("Mensaje adicional guardado:", mensajeGuardado);
-}
+// Mostrar en consola los valores guardados
+if (storedName) console.log("Nombre guardado:", storedName);
+if (storedIntention) console.log("Intención guardada:", storedIntention);
+if (storedRoseSrc) console.log("URL de la rosa guardada:", storedRoseSrc);
+if (storedRoseColor) console.log("Color de la rosa guardado:", storedRoseColor);
+if (storedVideo) console.log("Enlace de video guardado:", storedVideo);
+if (mensajeGuardado) console.log("Mensaje adicional guardado:", mensajeGuardado);
+if (storedBouquetOption) console.log("Opción de ramo guardada:", storedBouquetOption);
 
 
 
@@ -695,3 +701,173 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
+
+//cuarta pestaña
+// Función para mostrar el ramo según el color de la rosa seleccionada
+function mostrarBouquet() {
+  // Obtiene el color de la rosa seleccionada desde localStorage
+  let selectedColor = localStorage.getItem("selectedRoseColor");
+
+  // Verifica que el color esté en `localStorage`
+  if (!selectedColor) {
+    console.warn("No hay color seleccionado en localStorage.");
+    return;
+  }
+
+  // Normaliza el color a minúsculas para evitar problemas de coincidencia
+  selectedColor = selectedColor.toLowerCase();
+
+  // Mapeo de códigos hexadecimales a los IDs de ramos
+  const colorToBouquetMap = {
+    "#e23535": "bouquet-red",
+    "#ff9c24": "bouquet-orange",
+    "#6e16e3": "bouquet-violet",
+    "#fdd300": "bouquet-yellow",
+    "#2d95ff": "bouquet-lightblue",
+    "#ff0000": "bouquet-white", // Asegúrate de que este sea el color correcto para blanco
+    "#ff58ac": "bouquet-pink"
+  };
+
+  // Obtener el ID del ramo correspondiente al color
+  const bouquetId = colorToBouquetMap[selectedColor];
+
+  // Oculta todos los ramos inicialmente
+  document.querySelectorAll(".bouquet-img").forEach(img => {
+    img.style.display = "none";
+  });
+
+  // Muestra el ramo correspondiente al color de la rosa seleccionada
+  if (bouquetId) {
+    const bouquetElement = document.getElementById(bouquetId);
+    if (bouquetElement) {
+      bouquetElement.style.display = "block";
+      console.log("Ramo mostrado:", bouquetId); // Verificación en consola
+    } else {
+      console.warn("No se encontró un ramo para el color seleccionado:", bouquetId);
+    }
+  } else {
+    console.warn("No se encontró mapeo para el color:", selectedColor);
+  }
+}
+
+
+
+// Escucha el evento de clic en el botón para ir a la cuarta pestaña
+document.getElementById("btn-letter").addEventListener("click", function () {
+  // Obtiene el valor del textarea
+  const messageTextarea = document.getElementById("message").value.trim();
+
+  // Verifica si el textarea está vacío
+  if (messageTextarea === "") {
+    alert("Por favor, escribe un mensaje antes de continuar.");
+    return; // Evita el cambio de pestaña si el mensaje está vacío
+  }
+
+  // Si el textarea no está vacío, proceder a la cuarta pestaña
+  document.getElementById("thirdTab").style.display = "none";
+  document.getElementById("fourthTab").style.display = "block";
+  
+  // Llamada a la función para mostrar el ramo correspondiente
+  mostrarBouquet();
+
+  // Añadir la animación de entrada
+  document.getElementById("fourthTab").classList.add("animated");
+
+  // Quitar la clase de animación después de que termine
+  setTimeout(() => {
+      document.getElementById("fourthTab").classList.remove("animated");
+  }, 900); // Tiempo de la animación en milisegundos
+});
+
+function SaveBouquet(option) {
+  // Verifica si el usuario eligió "Sí" (option = 2)
+  if (option === 2) {
+    // Actualiza `localStorage` para guardar el ramo en lugar de la rosa
+    let selectedColor = localStorage.getItem("selectedRoseColor");
+
+    // Normaliza el color a minúsculas para evitar problemas de coincidencia
+    if (selectedColor) {
+      selectedColor = selectedColor.toLowerCase();
+    } else {
+      console.warn("No se encontró un color en localStorage.");
+      return;
+    }
+
+    // Mapeo de colores a las URLs de los ramos
+    const colorToBouquetMap = {
+      "#e23535": "./3d/roses-red.png",
+      "#ff9c24": "./3d/roses-orange.png",
+      "#6e16e3": "./3d/roses-violet.png",
+      "#fdd300": "./3d/roses-yellow.png",
+      "#2d95ff": "./3d/roses-lightblue.png",
+      "#ff0000": "./3d/roses-white.png",
+      "#ff58ac": "./3d/roses-pink.png"
+    };
+
+    // Obtener la URL del ramo según el color de la rosa seleccionada
+    const bouquetSrc = colorToBouquetMap[selectedColor];
+    
+    if (bouquetSrc) {
+      // Actualiza `localStorage` con la URL del ramo
+      localStorage.setItem("selectedRoseSrc", bouquetSrc);
+      console.log("Se guardó el ramo en localStorage:", bouquetSrc);
+    } else {
+      console.warn("No se encontró un ramo para el color seleccionado:", selectedColor);
+    }
+  } else {
+    // Si elige "No", no se realizan cambios en `localStorage`
+    console.log("El usuario decidió no convertir la rosa en un ramo.");
+  }
+
+  // Ocultar la cuarta pestaña y mostrar la quinta pestaña
+  document.getElementById("fourthTab").style.display = "none";
+  document.getElementById("fifthTab").style.display = "block";
+}
+
+
+//quinta Pestaña
+function editSection(section) {
+  // Oculta la página de resumen
+  document.getElementById("fifthTab").style.display = "none";
+
+  switch (section) {
+      case 'name':
+          // Muestra la pestaña para editar el nombre
+          document.getElementById("firstTab").style.display = "block";
+          break;
+      case 'intention':
+          // Muestra la pestaña para editar la intención
+          document.getElementById("secondTab").style.display = "block";
+          break;
+      case 'color':
+          // Muestra la pestaña del slider de color de rosas
+          document.getElementById("firstTab").style.display = "block";
+          break;
+      case 'message':
+          // Muestra la pestaña para editar el mensaje adicional
+          document.getElementById("thirdTab").style.display = "block";
+          break;
+      case 'video':
+          // Muestra la pestaña para agregar el enlace de video
+          document.getElementById("thirdTab").style.display = "block";
+          break;
+  }
+}
+
+// Función para actualizar el resumen cuando vuelva a la quinta pestaña
+function updateSummary() {
+  document.getElementById("summaryName").innerText = localStorage.getItem("selectedName") || "No especificado";
+  document.getElementById("summaryIntention").innerText = localStorage.getItem("selectedIntention") || "No especificada";
+  document.getElementById("summaryColor").innerText = localStorage.getItem("selectedRoseColor") || "No especificado";
+  document.getElementById("summaryMessage").innerText = localStorage.getItem("mensajeAdicional") || "No especificado";
+  document.getElementById("summaryVideo").innerText = localStorage.getItem("videoLink") || "No especificado";
+}
+
+// Llama a `updateSummary` cada vez que vuelvas a la quinta pestaña para que refleje cualquier cambio.
+
+
+// Al regresar a la quinta pestaña
+function goToSummaryPage() {
+  document.getElementById("fifthTab").style.display = "block";
+  updateSummary(); // Actualizar el resumen con los valores de localStorage
+}

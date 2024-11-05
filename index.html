@@ -102,7 +102,8 @@
                 <div id="roses" class="rose-container swiper-wrapper">
                     <!-- Las imágenes ya están agregadas en el HTML -->
                     <div class="swiper-slide"> <img class="rose" src="./3d/rose-red.png" alt="Rosa roja"
-                            data-color="#e23535"></div>
+                            data-color="#e23535">
+                        </div>
                     <div class="swiper-slide"> <img class="rose" src="./3d/rose-orange.png" alt="Rosa naranja"
                             data-color="#ff9c24">
                     </div>
@@ -116,7 +117,7 @@
                             data-color="#2d95ff">
                     </div>
                     <div class="swiper-slide"> <img class="rose" src="./3d/rose-white.png" alt="Rosa blanca"
-                            data-color="#FF0000"></div>
+                            data-color="#ff0000"></div>
                     <div class="swiper-slide"> <img class="rose" src="./3d/rose-pink.png" alt="Rosa rosada"
                             data-color="#ff58ac"></div>
                 </div>
@@ -654,6 +655,9 @@
     
             <div id="label-image" class="image-container" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
                 <div id="video-picture-btns" style="display: initial;">
+                    <div style="text-align: center; margin-bottom: 10px; font-weight: 600; color: #555;">
+                        ¿Deceas agregar un video?
+                    </div>
                     <div id="agregar-video" onclick="document.getElementById('modal-video').style.display='initial';document.getElementById('modal-video').style.opacity = 1;" class="svg-form-uploa bg-strong-color" style="
     border-radius: 11px;
     font-size: 16px;
@@ -705,6 +709,93 @@
     
     
         </div>
+
+
+
+<!-- Cuarta pestaña: Personalización -->
+<div id="fourthTab" class="fourth-page" style="display: none;">
+    <div id="color-ramos" class="bg-color-container" 
+         style="position: relative; 
+                width: 200px; 
+                height: 200px; 
+                border-radius: 50%; 
+                display: flex; 
+                justify-content: center; 
+                align-items: center; 
+                margin: 40px auto; 
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);">
+        <!-- Aquí solo se mostrará el ramo correspondiente al color -->
+        <img src="./3d/roses-red.png" id="bouquet-red" class="bouquet-img" style="display: none; width: 120px; height: auto; z-index: 1;">
+        <img src="./3d/roses-orange.png" id="bouquet-orange" class="bouquet-img" style="display: none; width: 120px; height: auto; z-index: 1;">
+        <img src="./3d/roses-violet.png" id="bouquet-violet" class="bouquet-img" style="display: none; width: 120px; height: auto; z-index: 1;">
+        <img src="./3d/roses-yellow.png" id="bouquet-yellow" class="bouquet-img" style="display: none; width: 120px; height: auto; z-index: 1;">
+        <img src="./3d/roses-lightblue.png" id="bouquet-lightblue" class="bouquet-img" style="display: none; width: 120px; height: auto; z-index: 1;">
+        <img src="./3d/roses-white.png" id="bouquet-white" class="bouquet-img" style="display: none; width: 120px; height: auto; z-index: 1;">
+        <img src="./3d/roses-rose.png" id="bouquet-pink" class="bouquet-img" style="display: none; width: 120px; height: auto; z-index: 1;">
+    </div>
+
+    <div id="options-div" style="text-align: center; font-family: 'Cascadia Code', monospace;">
+        <h2 style="font-size: 24px; font-weight: 600; margin: 20px 0;">¿Deseas convertir la rosa en un ramo?</h2>
+    
+        <div style="display: flex; flex-direction: column; gap: 10px; align-items: center;">
+            <button id="btn-si" onclick="SaveBouquet(2)" 
+                    style="width: 120px; 
+                           padding: 10px 0; 
+                           font-size: 18px; 
+                           font-weight: bold; 
+                           border: 2px solid black; 
+                           border-radius: 16px; 
+                           cursor: pointer;
+                           text-align: center;">
+                Sí
+            </button>
+    
+            <button id="btn-no" onclick="SaveBouquet(1)" 
+                    style="width: 120px; 
+                           padding: 10px 0; 
+                           font-size: 18px; 
+                           font-weight: bold; 
+                           border: 2px solid black; 
+                           border-radius: 16px; 
+                           cursor: pointer;
+                           text-align: center;">
+                No
+            </button>
+        </div>
+    </div>
+    
+</div>
+
+
+<!-- Quinta pestaña: Finalizar -->
+<div id="fifthTab" class="fifth-page" style="display: none;">
+
+
+    <h2>Resumen de tu Selección</h2>
+    <p>Nombre: <span id="summaryName"></span> <button onclick="editSection('name')">Editar</button></p>
+    <p>Intención: <span id="summaryIntention"></span> <button onclick="editSection('intention')">Editar</button></p>
+    <p>Color de Rosa: <span id="summaryColor"></span> <button onclick="editSection('color')">Editar</button></p>
+    <p>Mensaje Adicional: <span id="summaryMessage"></span> <button onclick="editSection('message')">Editar</button></p>
+    <p>Enlace de Video: <span id="summaryVideo"></span> <button onclick="editSection('video')">Editar</button></p>
+    
+    
+     <button id="finishBtn" onclick="finishProject()" 
+            style="padding: 15px 30px;
+                   font-size: 20px; 
+                   font-weight: bold; 
+                   color: white; 
+                   background-color: #e53935; 
+                   border: 2px solid #b71c1c; 
+                   border-radius: 12px; 
+                   cursor: pointer;
+                   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+                   transition: background-color 0.3s, transform 0.2s;
+                   margin-top: 50px;">
+        Finalizar
+    </button>
+</div>
+
+
 
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.1.0/chroma.min.js"></script>

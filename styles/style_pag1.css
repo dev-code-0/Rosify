@@ -4,7 +4,6 @@
 }
 body {
     font-family: 'Cascadia Code', monospace;
-    background: linear-gradient(180deg, #f7f7f7, #ffffff);
     scroll-behavior: smooth;
     -webkit-touch-callout: none; /* Evita la acción predeterminada de los toques largos en iOS */
     -webkit-user-select: none;   /* Evita la selección de texto en iOS */

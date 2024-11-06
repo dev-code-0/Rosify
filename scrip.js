@@ -407,11 +407,11 @@ document.getElementById("backBtn").addEventListener("click", function () {
     // Mostrar la segunda pestaña con animación
     const firstTab = document.getElementById("firstTab");
     firstTab.style.display = "block";
-    firstTab.classList.add("animated"); // Agrega la clase para la animación
+    firstTab.classList.add("animated-1"); // Agrega la clase para la animación
 
     // Quitar la clase de animación después de que termine
     setTimeout(() => {
-        secondTab.classList.remove("animated");
+        secondTab.classList.remove("animated-1");
     }, 900); // Tiempo de la animación en milisegundos
 
 

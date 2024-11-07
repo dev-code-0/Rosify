@@ -130,7 +130,7 @@ var swiper = new Swiper(".mySwiper", {
       
 
 
-      for( let i = 0; i <=15; i++){
+      for( let i = 0; i <=20; i++){
         document.getElementById(`s${i}`).style.color = activeColor;
       }
       // Actualiza el color de los elementos según el color de la rosa activa.

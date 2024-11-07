@@ -211,7 +211,7 @@
                 </div>
 
 
-                <div style=" width: 56%; transform: translate(70%, -145px); text-align: initial; transition: 0.7s;">
+                <div style=" width: 60%; transform: translate(60%, -145px); text-align: initial; transition: 0.7s;">
                     <div class="preview-text color-rose">
                         <span id="name-vista-previa" class="color-rose"></span>
                         <span class="si-0" id="s0">, te han regalado esta rosa para que sepas lo especial que eres para esa
@@ -767,33 +767,62 @@
 </div>
 
 
-<!-- Quinta pestaña: Finalizar -->
-<div id="fifthTab" class="fifth-page" style="display: none;">
-
-
-    <h2>Resumen de tu Selección</h2>
-    <p>Nombre: <span id="summaryName"></span> <button onclick="editSection('name')">Editar</button></p>
-    <p>Intención: <span id="summaryIntention"></span> <button onclick="editSection('intention')">Editar</button></p>
-    <p>Color de Rosa: <span id="summaryColor"></span> <button onclick="editSection('color')">Editar</button></p>
-    <p>Mensaje Adicional: <span id="summaryMessage"></span> <button onclick="editSection('message')">Editar</button></p>
-    <p>Enlace de Video: <span id="summaryVideo"></span> <button onclick="editSection('video')">Editar</button></p>
+<!-- Quinta pestaña: Resumen de Selección -->
+<div id="fifthTab" class="fifth-page" style="display: none; border-radius: 12px;
+background: #e0e0e0;
+box-shadow: 20px 20px 60px #bebebe,
+              -20px -20px 60px #ffffff; padding-top: 40px; padding-bottom: 40px; margin-top: 20px; margin-bottom: 20px;">
     
+    <h2 id="resumen" style="text-align: center; font-weight: 700; font-size: 24px; margin-bottom: 30px; margin-top: 0;">Resumen de tu Selección</h2>
     
-     <button id="finishBtn" onclick="finishProject()" 
-            style="padding: 15px 30px;
-                   font-size: 20px; 
-                   font-weight: bold; 
-                   color: white; 
-                   background-color: #e53935; 
-                   border: 2px solid #b71c1c; 
-                   border-radius: 12px; 
-                   cursor: pointer;
-                   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-                   transition: background-color 0.3s, transform 0.2s;
-                   margin-top: 50px;">
+    <div class="summary-container" style="display: grid; gap: 15px; padding: 20px;">
+
+        <!-- Tarjeta para Nombre -->
+        <div class="summary-card" style="display: flex; flex-direction: column; padding: 15px; border: 2px solid #eee; box-shadow: 20px 20px 60px #bebebe,
+               -20px -20px 60px #ffffff; border-radius: 12px; text-align: left;">
+            <h3 style="margin: 0 0 5px; font-weight: 600; color: #000;">Nombre</h3>
+            <p id="summaryName" style="margin: 0; font-weight: 400; color: #000;"></p>
+        </div>
+        
+        <!-- Tarjeta para Intención -->
+        <div class="summary-card" style="display: flex; flex-direction: column; padding: 15px; border: 2px solid #eee; box-shadow: 20px 20px 60px #bebebe,
+               -20px -20px 60px #ffffff;  border-radius: 12px; text-align: left;">
+            <h3 style="margin: 0 0 5px; font-weight: 600; color: #000;">Intención</h3>
+            <p id="summaryIntention" style="margin: 0; font-weight: 400; color: #000;"></p>
+        </div>
+        
+        <!-- Tarjeta para Color de Rosa -->
+        <div class="summary-card" style="display: flex; flex-direction: column; padding: 15px; border: 2px solid #eee; box-shadow: 20px 20px 60px #bebebe,
+               -20px -20px 60px #ffffff; border-radius: 12px; text-align: left;">
+            <h3 style="margin: 0 0 5px; font-weight: 600; color: #000;">Color de Rosa</h3>
+            <div id="summaryColor" style="margin: 0; display: flex; justify-content: center; align-items: center; font-weight: 400; color: #555;">
+                <!-- Imagen de la rosa aquí -->
+            </div>
+        </div>
+        
+        <!-- Tarjeta para Mensaje Adicional -->
+        <div class="summary-card" style="display: flex; flex-direction: column; padding: 15px; border: 2px solid #eee; box-shadow: 20px 20px 60px #bebebe,
+               -20px -20px 60px #ffffff; border-radius: 12px; text-align: left;">
+            <h3 style="margin: 0 0 5px; font-weight: 600; color: #000;">Mensaje Adicional</h3>
+            <textarea id="summaryMessage" rows="2" readonly style="width: 90%; padding: 8px; border: 2px solid #eee; background: transparent; border-radius: 8px; resize: none; overflow-y: auto; font-size: 14px; color: #000; max-height: 60px;"></textarea>
+        </div>
+        
+        <!-- Tarjeta para Enlace de Video -->
+        <div class="summary-card" style="display: flex; flex-direction: column; padding: 15px; border: 2px solid #eee; box-shadow: 20px 20px 60px #bebebe,
+               -20px -20px 60px #ffffff; border-radius: 12px; text-align: left;">
+            <h3 style="margin: 0 0 5px; font-weight: 600; color: #000;">Enlace de Video</h3>
+            <p id="summaryVideo" style="margin: 0; font-weight: 400; color: #000;"></p>
+        </div>
+    </div>
+
+    <!-- Botón Finalizar -->
+    <button id="finishBtn" onclick="finishProject()" style="margin: 20px auto; padding: 15px 30px; font-size: 18px; font-weight: bold; border: none; border-radius: 30px; cursor: pointer;  transition: transform 0.3s, background-color 0.3s;" onmousedown="this.style.transform='scale(0.95)';" onmouseup="this.style.transform='scale(1)';">
         Finalizar
     </button>
 </div>
+
+
+
 
 
 

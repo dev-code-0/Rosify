@@ -126,6 +126,7 @@ var swiper = new Swiper(".mySwiper", {
       document.getElementById("btn-si").style.backgroundColor = activeColor;
       document.getElementById("btn-no").style.backgroundColor = activeColor;
       document.getElementById("finishBtn").style.backgroundColor = activeColor;
+      document.getElementById("resumen").style.color = activeColor;
       
 
 
@@ -291,6 +292,36 @@ function ChangeIntention(intentionIndex, intentionId) {
   const selectedMessage = document.querySelector(`.si-${intentionIndex}`);
   if (selectedMessage) {
       selectedMessage.style.display = 'inline';
+      
+      // Mostrar el mensaje de intención en el resumen (id="summaryIntention")
+      const summaryIntention = document.getElementById("summaryIntention");
+      summaryIntention.textContent = selectedMessage.textContent;
+
+      // Guardar el mensaje completo en una variable para expandir
+      let fullMessage = summaryIntention.textContent;
+
+      // Función para mostrar solo la parte del mensaje después de la coma
+      function showPartialMessage() {
+        const commaIndex = fullMessage.indexOf(",");
+        if (commaIndex !== -2) {
+          summaryIntention.textContent = fullMessage.substring(commaIndex + 2).trim();
+        }
+      }
+
+      // Función para alternar entre el mensaje parcial y el completo
+      function toggleMessage() {
+        if (summaryIntention.textContent === fullMessage) {
+          showPartialMessage(); // Mostrar solo la parte del mensaje
+        } else {
+          summaryIntention.textContent = fullMessage; // Mostrar el mensaje completo
+        }
+      }
+
+      // Mostrar el mensaje parcial al inicio
+      showPartialMessage();
+
+      // Agregar el evento de clic para expandir el mensaje
+      summaryIntention.addEventListener("click", toggleMessage);
   }
   
   // Mantener el nombre en la vista previa
@@ -298,6 +329,9 @@ function ChangeIntention(intentionIndex, intentionId) {
   if (nameInput) {
       document.getElementById("name-vista-previa").textContent = nameInput;
       document.getElementById("name-vista-previa").style.display = 'inline';
+
+      document.getElementById("summaryName").textContent = nameInput;
+      document.getElementById("summaryName").style.display = 'inline';
   }
 
   // Quitar la clase de borde de color de todas las intenciones
@@ -305,9 +339,8 @@ function ChangeIntention(intentionIndex, intentionId) {
       intention.classList.remove('selected-intention');
       intention.style.borderColor = ""; // Limpiar el color de borde
   });
-  // ========================
+  
   // Guardar la intención seleccionada en localStorage
-  // ========================
   localStorage.setItem("selectedIntention", intentionId);
   isIntentionSelected = true; // Marcar que se ha seleccionado una intención
   
@@ -322,6 +355,8 @@ function ChangeIntention(intentionIndex, intentionId) {
       selectedIntention.style.borderColor = "#FF5733"; // Color predeterminado si no hay rosa seleccionada
   }
 }
+
+
 
 // Función para avanzar a la tercera página
 function goToThirdPage() {
@@ -386,16 +421,21 @@ document.getElementById("confirmBtn").onclick = function () {
   document.getElementById("firstTab").style.display = "none";
   document.getElementById("secondTab").style.display = "block";
 
-  // Mostrar solo la rosa que estaba en el centro
+  // Mostrar solo la rosa que estaba en el centro en el segundo contenedor
   let secondPageImageContainer = document.getElementById("integer-rosa");
   secondPageImageContainer.innerHTML = ""; // Limpia las otras rosas
 
   let selectedRoseImg = document.createElement("img");
   selectedRoseImg.src = activeRoseSrc; // Usa la imagen de la rosa en el centro
-  selectedRoseImg.classList.add("s-1"); // Añade la clase 's-1' para aplicar los estilos desde CSS
+  selectedRoseImg.classList.add("s-1"); // Clase específica para el segundo contenedor
 
-  secondPageImageContainer.appendChild(selectedRoseImg); // Muestra la rosa
+  secondPageImageContainer.appendChild(selectedRoseImg); // Muestra la rosa en el segundo contenedor
+
+  
 };
+
+
+
 
 // Función para regresar a la primera pestaña
 document.getElementById("backBtn").addEventListener("click", function () {
@@ -560,22 +600,22 @@ inputName.addEventListener('input', function () {
 // ========================
 // Lectura y verificación de valores de localStorage
 // ========================
-const storedName = localStorage.getItem("selectedName");
-const storedIntention = localStorage.getItem("selectedIntention");
-const storedRoseSrc = localStorage.getItem("selectedRoseSrc");
-const storedRoseColor = localStorage.getItem("selectedRoseColor");
-const storedVideo = localStorage.getItem("videoLink");
-const mensajeGuardado = localStorage.getItem("mensajeAdicional");
-const storedBouquetOption = localStorage.getItem("selectedBouquetOption"); // Guarda si el usuario eligió el ramo
+// const storedName = localStorage.getItem("selectedName");
+// const storedIntention = localStorage.getItem("selectedIntention");
+// const storedRoseSrc = localStorage.getItem("selectedRoseSrc");
+// const storedRoseColor = localStorage.getItem("selectedRoseColor");
+// const storedVideo = localStorage.getItem("videoLink");
+// const mensajeGuardado = localStorage.getItem("mensajeAdicional");
+// const storedBouquetOption = localStorage.getItem("selectedBouquetOption"); // Guarda si el usuario eligió el ramo
 
-// Mostrar en consola los valores guardados
-if (storedName) console.log("Nombre guardado:", storedName);
-if (storedIntention) console.log("Intención guardada:", storedIntention);
-if (storedRoseSrc) console.log("URL de la rosa guardada:", storedRoseSrc);
-if (storedRoseColor) console.log("Color de la rosa guardado:", storedRoseColor);
-if (storedVideo) console.log("Enlace de video guardado:", storedVideo);
-if (mensajeGuardado) console.log("Mensaje adicional guardado:", mensajeGuardado);
-if (storedBouquetOption) console.log("Opción de ramo guardada:", storedBouquetOption);
+// // Mostrar en consola los valores guardados
+// if (storedName) console.log("Nombre guardado:", storedName);
+// if (storedIntention) console.log("Intención guardada:", storedIntention);
+// if (storedRoseSrc) console.log("URL de la rosa guardada:", storedRoseSrc);
+// if (storedRoseColor) console.log("Color de la rosa guardado:", storedRoseColor);
+// if (storedVideo) console.log("Enlace de video guardado:", storedVideo);
+// if (mensajeGuardado) console.log("Mensaje adicional guardado:", mensajeGuardado);
+// if (storedBouquetOption) console.log("Opción de ramo guardada:", storedBouquetOption);
 
 
 
@@ -648,17 +688,26 @@ function esEnlaceDeVideo(url) {
 function guardarLink() {
   const youtubeUrl = document.getElementById('youtube_url').value;
   
-  if (youtubeUrl) {
+  // Verificar si el enlace ingresado es de un video usando la función de validación
+  if (youtubeUrl && esEnlaceDeVideo(youtubeUrl)) {
       // Guardar el enlace en localStorage
       localStorage.setItem("videoLink", youtubeUrl);
       console.log("Enlace guardado:", youtubeUrl);
 
+      // Mostrar solo la parte inicial del enlace en la quinta página
+      const summaryVideo = document.getElementById("summaryVideo");
+      const urlObject = new URL(youtubeUrl);
+      const displayUrl = urlObject.origin + "/...";
+      summaryVideo.textContent = displayUrl;
+
       // Cerrar el modal
       document.getElementById('modal-video').style.display = 'none';
   } else {
-      console.log("Por favor, ingresa un enlace válido.");
+      console.log("Por favor, ingresa un enlace de video válido.");
   }
 }
+
+
 
 function borrarLink() {
   // Borrar el enlace del localStorage
@@ -682,6 +731,7 @@ function cerrarModal() {
 document.addEventListener("DOMContentLoaded", function() {
   const messageTextarea = document.getElementById("message");
   const charCounter = document.getElementById("char-counter");
+  const summaryMessage = document.getElementById("summaryMessage"); // Elemento donde se mostrará el mensaje en la quinta pestaña
 
   // Limpiar el mensaje en localStorage al cargar la página
   localStorage.removeItem("mensajeAdicional");
@@ -689,8 +739,9 @@ document.addEventListener("DOMContentLoaded", function() {
   // Asegurarse de que el textarea y el contador comiencen vacíos
   messageTextarea.value = "";
   charCounter.textContent = "0 / 300";
+  summaryMessage.value = ""; // Asegurarse de que también empiece vacío
 
-  // Actualizar el contador y guardar en localStorage al escribir
+  // Actualizar el contador, guardar en localStorage y mostrar en la quinta pestaña al escribir
   messageTextarea.addEventListener("input", function() {
       const currentLength = messageTextarea.value.length;
       charCounter.textContent = `${currentLength} / 300`;
@@ -698,8 +749,12 @@ document.addEventListener("DOMContentLoaded", function() {
       // Guardar el mensaje en localStorage
       localStorage.setItem("mensajeAdicional", messageTextarea.value);
       console.log("Mensaje actualizado y guardado en localStorage:", messageTextarea.value);
+
+      // Actualizar el mensaje en la quinta pestaña
+      summaryMessage.value = messageTextarea.value;
   });
 });
+
 
 
 //cuarta pestaña
@@ -801,7 +856,7 @@ function SaveBouquet(option) {
       "#fdd300": "./3d/roses-yellow.png",
       "#2d95ff": "./3d/roses-lightblue.png",
       "#ff0000": "./3d/roses-white.png",
-      "#ff58ac": "./3d/roses-pink.png"
+      "#ff58ac": "./3d/roses-rose.png"
     };
 
     // Obtener la URL del ramo según el color de la rosa seleccionada
@@ -819,55 +874,73 @@ function SaveBouquet(option) {
     console.log("El usuario decidió no convertir la rosa en un ramo.");
   }
 
+  // Mostrar la imagen seleccionada en la quinta pestaña
+  const summaryColorContainer = document.getElementById("summaryColor");
+  const selectedRoseSrc = localStorage.getItem("selectedRoseSrc");
+  
+  if (selectedRoseSrc) {
+    summaryColorContainer.innerHTML = ""; // Limpia cualquier contenido anterior
+
+    const img = document.createElement("img");
+    img.src = selectedRoseSrc; // Usa la imagen almacenada en `localStorage`
+    img.style.width = "120px"; // Ajusta el tamaño según sea necesario
+    img.style.height = "auto";
+    summaryColorContainer.appendChild(img); // Muestra la imagen en el contenedor de la quinta pestaña
+  }
+
   // Ocultar la cuarta pestaña y mostrar la quinta pestaña
   document.getElementById("fourthTab").style.display = "none";
   document.getElementById("fifthTab").style.display = "block";
 }
 
 
+
 //quinta Pestaña
-function editSection(section) {
-  // Oculta la página de resumen
-  document.getElementById("fifthTab").style.display = "none";
-
-  switch (section) {
-      case 'name':
-          // Muestra la pestaña para editar el nombre
-          document.getElementById("firstTab").style.display = "block";
-          break;
-      case 'intention':
-          // Muestra la pestaña para editar la intención
-          document.getElementById("secondTab").style.display = "block";
-          break;
-      case 'color':
-          // Muestra la pestaña del slider de color de rosas
-          document.getElementById("firstTab").style.display = "block";
-          break;
-      case 'message':
-          // Muestra la pestaña para editar el mensaje adicional
-          document.getElementById("thirdTab").style.display = "block";
-          break;
-      case 'video':
-          // Muestra la pestaña para agregar el enlace de video
-          document.getElementById("thirdTab").style.display = "block";
-          break;
-  }
+// Función para obtener el nombre del color desde el código hexadecimal
+function getColorName(colorHex) {
+  const colorMap = {
+      "#e23535": "Rojo",
+      "#ff9c24": "Anaranjado",
+      "#6e16e3": "Violeta",
+      "#fdd300": "Celeste",
+      "#ff0000": "Blanco",
+      "#ff58ac": "Rosada"
+  };
+  return colorMap[colorHex.toLowerCase()] || "Desconocido";
 }
 
-// Función para actualizar el resumen cuando vuelva a la quinta pestaña
-function updateSummary() {
-  document.getElementById("summaryName").innerText = localStorage.getItem("selectedName") || "No especificado";
-  document.getElementById("summaryIntention").innerText = localStorage.getItem("selectedIntention") || "No especificada";
-  document.getElementById("summaryColor").innerText = localStorage.getItem("selectedRoseColor") || "No especificado";
-  document.getElementById("summaryMessage").innerText = localStorage.getItem("mensajeAdicional") || "No especificado";
-  document.getElementById("summaryVideo").innerText = localStorage.getItem("videoLink") || "No especificado";
+// Función para formatear el enlace de video
+function formatVideoLink(url) {
+  if (!url) return "No especificado";
+  return url.length > 25 ? `${url.substring(0, 25)}...` : url;
 }
 
-// Llama a `updateSummary` cada vez que vuelvas a la quinta pestaña para que refleje cualquier cambio.
+// Función para registrar toda la selección del usuario en la consola
+function logUserSelection() {
+  const name = localStorage.getItem("selectedName") || "No especificado";
+  const intention = localStorage.getItem("selectedIntention") || "No especificada";
+  const colorHex = localStorage.getItem("selectedRoseColor") || "No especificado";
+  const colorName = getColorName(colorHex);
+  const roseSrc = localStorage.getItem("selectedRoseSrc") || "No especificado";
+  const message = localStorage.getItem("mensajeAdicional") || "No especificado";
+  const videoLink = localStorage.getItem("videoLink") || "No especificado";
+  const bouquetOption = localStorage.getItem("selectedBouquetOption") === "true" ? "Sí" : "No";
 
+  
+  console.log("Selección del Usuario:");
+  console.log("Nombre:", name);
+  console.log("Intención:", intention);
+  console.log("Color de Rosa:", colorName);
+  console.log("URL de la Rosa:", roseSrc);
+  console.log("Mensaje Adicional:", message);
+  console.log("Enlace de Video:", formatVideoLink(videoLink));
+  console.log("Convertido a Ramo:", bouquetOption);
+}
 
-// Al regresar a la quinta pestaña
+// Llama a `logUserSelection` cuando se acceda a la quinta pestaña
 function goToSummaryPage() {
-  document.getElementById("fifthTab").style.display = "block";
-  updateSummary(); // Actualizar el resumen con los valores de localStorage
+  logUserSelection();
 }
+
+// Llama a `goToSummaryPage` cuando se haga clic en el botón para acceder a la quinta pestaña
+document.getElementById("finishBtn").addEventListener("click", goToSummaryPage);

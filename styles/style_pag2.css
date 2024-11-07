@@ -1,4 +1,4 @@
-.second-page, .third-page, .fourth-page {
+.second-page, .third-page, .fourth-page, .fifth-page {
     display: grid;
     grid-template-rows: 260px auto 120px;
     animation: next 0.7s 1 ease-in-out forwards;
